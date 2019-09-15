@@ -1,0 +1,38 @@
+{
+  "name": "gig-connect",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./server",
+    "dev": "nodemon ./server",
+    "dev:debug": "DEBUG=gig-connect* npm run dev",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cloudinary": "^1.15.0",
+    "connect-mongo": "^3.0.0",
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "hbs": "^4.0.4",
+    "http-errors": "^1.7.3",
+    "mongoose": "^=5.6.13",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^2.2.1",
+    "node-sass-middleware": "0.11.0",
+    "passport": "^0.4.0",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.2",
+    "eslint": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1"
+  }
+}
