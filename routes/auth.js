@@ -6,7 +6,7 @@ const router = Router();
 const bcrypt         = require("bcrypt");
 
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Hello World!' });
+  res.render('index', { title: 'GigConnect' });
 });
 
 router.get('/signup', (req, res, next) => {
