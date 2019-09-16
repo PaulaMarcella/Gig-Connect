@@ -33,7 +33,7 @@ app.use(sassMiddleware({
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use('/event', eventsRouter);
+app.use('/', eventsRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
