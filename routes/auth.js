@@ -7,7 +7,7 @@ const User = require('../models/user');
 
 
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Hello World!' });
+  res.render('index', { title: 'GigConnect' });
 });
 
 router.get('/signup', (req, res, next) => {
