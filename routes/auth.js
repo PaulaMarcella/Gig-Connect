@@ -30,8 +30,8 @@ router.post('/signup', (req, res, next) => {
           email,
           username,
           passwordHash: hash
-        })
-        res.redirect('/user');
+        });
+        //res.redirect('/user');
       })
       .catch(error => {
         console.log('Could not sign up user', error);
@@ -75,6 +75,13 @@ router.post('/signup', (req, res, next) => {
   
   router.get('/user', (req, res, next) => {
     res.render('user');
+  });
+
+  router.get('/logout', (req, res, next) => {
+    req.session.destroy((error) => {
+      // can't access session here
+      res.redirect('/login');
+    });
   });
 
 module.exports = router;
