@@ -30,7 +30,7 @@ router.post('/signup', (req, res, next) => {
           email,
           username,
           passwordHash: hash
-        });
+        })
         res.redirect('/user');
       })
       .catch(error => {
@@ -40,6 +40,41 @@ router.post('/signup', (req, res, next) => {
 
   router.get('/login', (req, res, next) => {
     res.render('auth/login');
+  });
+
+  router.post('/login', (req, res, next) => {
+    const username = req.body.username;
+    const passwordHash = req.body.password;
+
+    let tempUser;
+
+    User.findOne({ username })
+      .then(user => {
+        if (!user) {
+          throw new Error ('username could not be found');
+        } else {
+          tempUser = user;
+          return bcrypt.compare(passwordHash, user.passwordHash);
+        }
+      })
+      .then(match => {
+        if (!match) {
+          throw new Error ('Ups! Wrong Password!');
+        } else {
+          req.session.user = {
+            _id: tempUser._id
+          };
+          res.redirect('user');
+        }
+      })
+      .catch(error => {
+        console.log('Problem Logging user in', error);
+        next(error);
+      });
+  });
+  
+  router.get('/user', (req, res, next) => {
+    res.render('user');
   });
 
 module.exports = router;
