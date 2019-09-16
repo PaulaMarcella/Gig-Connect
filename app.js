@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const eventsRouter = require('./routes/event');
+const userRouter = require('./routes/user');
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/', eventsRouter);
+app.use('/', userRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
