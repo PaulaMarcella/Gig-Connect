@@ -7,11 +7,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/user');
-
+const bcrypt = require('bcrypt');
 const app = express();
+const router = require('./routes/auth');
+
+//const indexRouter = require('./routes/index');
+//const usersRouter = require('./routes/user');
+
+app.use('/', router);
 
 // Setup view engine
 app.set('views', join(__dirname, 'views'));
@@ -29,9 +32,6 @@ app.use(sassMiddleware({
   outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
   sourceMap: true
 }));
-
-app.use('/', indexRouter);
-app.use('/user', usersRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
