@@ -1,9 +1,13 @@
 body {
   margin: 0;
   padding: 50px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  background-image: url('../images/vinil.jpg');
+  background-size: cover;
+}
 
 a {
-  color: #00b7ff; }
+  color: #00b7ff; 
+}
 
 /*# sourceMappingURL=style.css.map */
