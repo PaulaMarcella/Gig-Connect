@@ -15,21 +15,23 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  console.log('signup post route req.body',req.body);
-  //const fistname = req.body.password;
-  //const lastname = req.body.password;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
   const email = req.body.email;
   const username = req.body.username;
   const passwordHash = req.body.password;
+
   
   bcrypt.hash(passwordHash, 10)
       .then(hash => {
-        User.create( {
+        return User.create( {
+          firstname,
+          lastname,
           email,
           username,
           passwordHash: hash
         });
-        res.redirect('/auth/user');
+        res.redirect('/user');
       })
       .catch(error => {
         console.log('Could not sign up user', error);
