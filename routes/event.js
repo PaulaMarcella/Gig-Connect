@@ -2,6 +2,7 @@
 
 const { Router } = require('express');
 const router = Router();
+const Event = require('../models/event');
 
 router.get('/event', (req, res, next) => {
     res.render('event/event');
@@ -11,8 +12,23 @@ router.get('/event', (req, res, next) => {
 router.post('/event', (req, res) => {
   // Creating an event
   console.log("The event object:", req.body);
+  const eventName = req.body.event;
+  const description = req.body.description;
+  const genre = req.body.genre;
+  const location = req.body.location; 
+  const ticketURL = req.body.ticket; 
+  const imageURL = req.body.image;
+
+  Event.create({
+    eventName,
+    description,
+    genre,
+    location,
+    ticketURL,
+    imageURL
+  });
   // Redirecting to the route of the created event
-  res.redirect('/aRoute/'+ "eventId");
+//   res.redirect('/aRoute/'+ "eventId");
 });
 
 router.get("/aRoute/:id",(req,res,next)=>{
