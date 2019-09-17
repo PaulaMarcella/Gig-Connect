@@ -10,4 +10,8 @@ a {
   color: #00b7ff; 
 }
 
+.cardGrid {
+  display: flex;
+  justify-content: space-around;
+}
 /*# sourceMappingURL=style.css.map */
