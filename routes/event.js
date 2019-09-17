@@ -11,7 +11,7 @@ router.get('/event', (req, res, next) => {
 
 router.post('/event', (req, res, next) => {
   // Creating an event
-  console.log("The event object:", req.body);
+  // console.log("The event object:", req.body);
   const eventName = req.body.event;
   const description = req.body.description;
   const genre = req.body.genre;
@@ -26,38 +26,27 @@ router.post('/event', (req, res, next) => {
     location,
     ticketURL,
     imageURL
+  })
+  .then(event=>{
+    res.redirect('/eventPage/' + event._id);
+  })
+  .catch(error=>{
+    console.log(error);
   });
-
-  // TODO 01
-  // Find the event in the DB, it's id, and redirect to route
-
-
-  // Redirecting to the route of the created event through id (route + eventId)
-  res.redirect('/eventPage/');
 });
 
-router.get('/eventPage', (req, res, next) => {
-  res.render('event/eventPage');
-  //console.log(req.body);
+// Note: Whatever goes after ":"" in the route is being accessed
+// with the same name in req.params.THENAME
+
+router.get("/eventPage/:id", (req,res,next) => {
+  console.log(req.params.id);
+  Event.findById(req.params.id)
+  .then((event) => {
+    res.render('event/eventPage', {event});
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 });
-
-router.get('/eventPage', (req, res, next) => {
-  Event.findById({_id: req.query})
-    .then((event) => {
-      //res.render('/event/eventPage');
-      console.log(event);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
-
-// TODo 02
-// router.get("/aRoute/:id",(req,res,next)=>{
-//   // req.params (Gets information from the url)
-//   // Find by id a specific event and render details
-//   res.render(/*A VIEW*/);
-// });
 
 module.exports = router;
