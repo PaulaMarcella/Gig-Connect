@@ -6,6 +6,30 @@ const bcrypt = require("bcrypt");
 const User = require('../models/user');
 
 
+
+//-------cloudinary configurations--------
+
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
+const multer = require('multer');
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+const storage = cloudinaryStorage({
+  cloudinary,
+  folder: '/gig-connect',
+  allowedFormats: [ 'jpg', 'png' ]
+});
+const upload = multer({ storage });
+
+//----------------------------------------
+
+
+
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'GigConnect' });
 });
@@ -14,14 +38,13 @@ router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
 });
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', upload.single('file'), (req, res, next) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const email = req.body.email;
   const username = req.body.username;
   const passwordHash = req.body.password;
-  const imageURL = req.body.imageURL;
-
+  const imageURL = req.file.url;
   
   bcrypt.hash(passwordHash, 10)
       .then(hash => {
@@ -33,7 +56,7 @@ router.post('/signup', (req, res, next) => {
           passwordHash: hash,
           imageURL
         });
-        //res.redirect('/user');
+        //res.render('profile');
       })
       .catch(error => {
         console.log('Could not sign up user', error);

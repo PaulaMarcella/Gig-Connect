@@ -28,28 +28,6 @@ router.post('/event', (req, res, next) => {
     imageURL
   });
 
-  // TODO 01
-  // Find the event in the DB, it's id, and redirect to route
-
-
-  // Redirecting to the route of the created event through id (route + eventId)
-  res.redirect('/eventPage/');
-});
-
-router.get('/eventPage', (req, res, next) => {
-  res.render('event/eventPage');
-  //console.log(req.body);
-});
-
-router.get('/eventPage', (req, res, next) => {
-  Event.findById({_id: req.query})
-    .then((event) => {
-      //res.render('/event/eventPage');
-      console.log(event);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 });
 
 
