@@ -73,16 +73,11 @@ router.post('/signup', (req, res, next) => {
       });
   });
   
-  // Shouldn't be here - Part of the user route.
-  router.get('/user', (req, res, next) => {
-    res.render('user');
-  });
-
   router.get('/logout', (req, res, next) => {
     req.session.destroy((error) => {
       // can't access session here
       res.redirect('/login');
     });
   });
-
+  
 module.exports = router;
