@@ -20,6 +20,7 @@ router.post('/signup', (req, res, next) => {
   const email = req.body.email;
   const username = req.body.username;
   const passwordHash = req.body.password;
+  const imageURL = req.body.imageURL;
 
   
   bcrypt.hash(passwordHash, 10)
@@ -29,7 +30,8 @@ router.post('/signup', (req, res, next) => {
           lastname,
           email,
           username,
-          passwordHash: hash
+          passwordHash: hash,
+          imageURL
         });
         //res.redirect('/user');
       })
@@ -64,7 +66,7 @@ router.post('/signup', (req, res, next) => {
           req.session.user = {
             _id: tempUser._id
           };
-          res.redirect('user');
+          res.redirect('profile');
         }
       })
       .catch(error => {
