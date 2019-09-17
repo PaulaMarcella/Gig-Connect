@@ -1,8 +1,9 @@
 <h4>Create an Event</h4>
 
-<form id="eventCreator" action="POST" action="/event">
+<form id="eventCreator" method="POST" action="/event">
 
     <label for="event">Event Name:</label>
+    {{!-- The name in the input defines the name of the req.body. e.g. req.body.event --}}
     <input type="text" name="event" placeholder="Name your event">
 
     <label for="description">Description:</label>

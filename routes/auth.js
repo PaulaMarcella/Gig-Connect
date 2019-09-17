@@ -73,6 +73,7 @@ router.post('/signup', (req, res, next) => {
       });
   });
   
+  // Shouldn't be here - Part of the user route.
   router.get('/user', (req, res, next) => {
     res.render('user');
   });

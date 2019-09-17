@@ -33,6 +33,7 @@ app.use(sassMiddleware({
 
 app.use(logger('dev'));
 app.use(express.json());
+//This is what allows you to acces the body ↓
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(expressSession({
