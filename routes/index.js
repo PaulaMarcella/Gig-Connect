@@ -5,18 +5,17 @@ const router = Router();
 const Event = require('../models/event');
 
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'GigConnect' });
+  Event.find()
+  .then(eventList => {
+    const data = {
+      eventList
+    };
+    console.log(data);
+    res.render('index', data);
+  })
+  .catch(error => {
+    next(error);
+  });
 });
-
-// Work in progress:
-// router.get('/', (req, res, next) => {
-//   Event.findById(req.body.)
-//   .then((event) => {
-//     res.render('index', {event});
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-// });
 
 module.exports = router;

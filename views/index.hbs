@@ -1,14 +1,14 @@
-{{#each event}}
-<div class="card" style="width: 18rem;">
-  <img src="{{event.imageURL}}" class="card-img-top" alt="Event Image">
-  <div class="card-body">
-    <h5 class="card-title">{{event.eventName}}</h5>
-    <p class="card-text">{{event.description}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Genre: {{event.genre}}</li>
-    <li class="list-group-item">Location: {{event.location}}</li>
-    <li class="list-group-item"><a href="{{event.ticketURL}}" class="card-link">Buy Ticket</a></li>
-  </ul>
+{{#each eventList}}
+<div class=“card” style=“width: 18rem;“>
+ <img src=“{{this.imageURL}}” class=“card-img-top” alt=“Event Image”>
+ <div class=“card-body”>
+   <h5 class=“card-title”>{{this.eventName}}</h5>
+   <p class=“card-text”>{{this.description}}</p>
+ </div>
+ <ul class=“list-group list-group-flush”>
+   <li class=“list-group-item”>Genre: {{this.genre}}</li>
+   <li class=“list-group-item”>Location: {{this.location}}</li>
+   <li class=“list-group-item”><a href=“{{this.ticketURL}}” class=“card-link”>Buy Ticket</a></li>
+ </ul>
 </div>
 {{/each}}
