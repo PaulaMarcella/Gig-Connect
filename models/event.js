@@ -29,7 +29,7 @@ const eventSchema = new mongoose.Schema({
   },
   imageURL: {
     type: String,
-    default: '../images/joshua-hoehne-6M9jjeZjscE-unsplash.jpg'
+    default: '../images/default-image.jpg'
     //required: true
   },
   date: {
