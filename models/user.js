@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const userSchema = new mongoose.Schema({
   firstname: {
@@ -41,7 +42,8 @@ const userSchema = new mongoose.Schema({
     type: Array
   },
   eventsAttending: {
-    type: Array
+    type: [ObjectId],
+    unique: true
   }
 });
 
