@@ -99,4 +99,15 @@ router.post('/image/edit', upload.single('file'), (req, res, next) => {
     });
 });
 
+router.get('/profile/attending', (req, res, next) => {
+  User.findById(req.session.user._id)
+  .then((user) => {
+    console.log(user);
+    res.render('profile-attending', {user});
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+});
+
 module.exports = router;

@@ -1,0 +1,26 @@
+<h4>Events you are Attending</h4>
+{{#each user.eventsAttending}}
+<div class="card bg-dark text-white">
+  <img src="{{this.imageURL}}" class="card-img" alt="Event Image">
+    <h5 class="card-title">{{this.eventName}}</h5>
+    <p class="card-text">{{this.description}}</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Artists: {{event.artists}}</li>
+    <li class="list-group-item">Genre: {{event.genre}}</li>
+    <li class="list-group-item">City: {{event.city}}</li>
+    <li class="list-group-item">Date: {{event.date}}</li>
+    <li class="list-group-item"><a href={{event.ticketURL}} target="_blank" class="card-link">Buy Ticket</a></li>
+  </ul>  
+
+  <div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+  <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+</div>
+
+<div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
+  <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+  </div>
+</div>
+
+{{/each}}

@@ -84,7 +84,7 @@ router.post('/signup', upload.single('file'), (req, res, next) => {
     User.findOne({ username })
       .then(user => {
         if (!user) {
-          throw new Error ('username could not be found');
+          throw new Error('username could not be found');
         } else {
           tempUser = user;
           return bcrypt.compare(passwordHash, user.passwordHash);
@@ -92,7 +92,7 @@ router.post('/signup', upload.single('file'), (req, res, next) => {
       })
       .then(match => {
         if (!match) {
-          throw new Error ('Ups! Wrong Password!');
+          throw new Error('Ups! Wrong Password!');
         } else {
           req.session.user = {
             _id: tempUser._id
