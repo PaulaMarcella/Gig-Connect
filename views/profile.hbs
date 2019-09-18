@@ -6,21 +6,21 @@
 <div class="card mb-3" style="max-width: 90%;">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <form method="GET" action="/profile/edit"> 
-  <button>EditProfile</button>
-    </form>
-    <form method="GET" action="/image/edit"> 
-  <button>Edit Photo</button>
-    </form>
-      <img src={{user.imageURL}} alt="profile photo" width="300px">
-  
+      <img  class="rounded" src={{user.imageURL}} alt="profile photo" width="300px">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         
         <h5 class="card-title">{{user.firstname}} {{user.lastname}}</h5>
         <p class="card-text">{{user.userDescription}}</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <p class="card-text">
+          <form method="GET" action="/profile/edit"> 
+          <button class="btn btn-primary">Edit Profile</button>
+            </form>
+            <form method="GET" action="/image/edit"> 
+          <button class="btn btn-primary">Edit Photo</button>
+            </form>
+        </p>
       </div>
     </div>
   </div>

@@ -43,6 +43,7 @@ router.post('/event', upload.single('file'), (req, res, next) => {
   const ticketURL = req.body.ticket; 
   const imageURL = req.file.url;
   const date = req.body.date;
+  const creator = req.session.user;
   
   Event.create({
     eventName,
@@ -52,7 +53,8 @@ router.post('/event', upload.single('file'), (req, res, next) => {
     city,
     ticketURL,
     imageURL,
-    date
+    date,
+    creator
   })
   .then(event=>{
     res.redirect('/eventPage/' + event._id);
