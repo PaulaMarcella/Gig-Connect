@@ -39,7 +39,12 @@ const eventSchema = new mongoose.Schema({
   },
   creator: {
     type: ObjectId
-  }
+  },
+  comments: [{
+    commentBody: { type: String},
+    commentTitle: { type:String},
+    commentAuthor: { type: String} 
+  }]
 });
 
 module.exports = mongoose.model('Event', eventSchema);

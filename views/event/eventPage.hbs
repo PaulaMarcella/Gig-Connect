@@ -10,15 +10,11 @@
     <p class="card-text">{{event.description}}</p>
       
     <form method="GET" action="/eventPage/{{event._id}}/edit"> 
-      <button type="button" class="btn btn-outline-dark">Edit Event Details</button>
-    </form>
-    <br>
-    <form method="GET" action="/eventImage/{{event._id}}/edit"> 
-      <button type="button" class="btn btn-outline-dark">Edit Event Image</button>
+      <button type="submit" class="btn btn-outline-dark">Edit Event Details</button>
     </form>
     <br>
     <form method="GET" action="/eventPage/{{event._id}}/delete">
-      <button type="button" class="btn btn-outline-danger">Delete Event</button>
+      <button type="submit" class="btn btn-outline-danger">Delete Event</button>
     </form>
   </div>
   <ul class="list-group list-group-flush">
@@ -36,5 +32,24 @@
       <button id="watch-switch" type="submit" class="btn btn-outline-dark">Follow Event</button>
 </form>
 
+{{!-- ---------COMMENT FORM---------- --}}
+
+<div>
+  {{#each event.comments}}
+  <h5>{{this.commentTitle}}</h5>
+   <p>{{this.commentBody}}</p>
+   <small><p>{{this.commentAuthor}}</p></small>
+  {{/each}}
+</div>
+
+<form method="POST" action="/add-comment/{{event._id}}">
+  <label for="commenttitle">Comment Title</label>
+  <input type="text" name="commenttitle" value="Title">
+
+  <label for="commenttitle">Comment Title</label>
+  <textarea name="commentbody" cols="50" rows="6">Write your comment here ...</textarea>
+
+  <button class="btn btn-primary">Submit Comment</button>
+</form>
 </div>
 </div>

@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 const User = require('./../models/user');
+const Event = require('./../models/event');
 const checkLogin = require('./../controllers/check-login');
 
 //-------cloudinary configurations--------
@@ -113,6 +114,7 @@ router.get('/profile/attending', (req, res, next) => {
 router.get('/eventPageAttend/:id', checkLogin, (req, res, next) => {
   const eventId = req.params.id;
   console.log(eventId);
+
   User.findByIdAndUpdate(req.session.user._id, {eventsAttending: eventId})
     .then(()=> {
       res.render('profile-attending');
@@ -120,6 +122,14 @@ router.get('/eventPageAttend/:id', checkLogin, (req, res, next) => {
     .catch((error) => {
       console.log(error);
     });
+
+  Event.findById(eventId)
+  .then((event)=> {
+    res.render('profile-attending', {event});
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 });
 
   

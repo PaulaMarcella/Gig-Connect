@@ -39,7 +39,8 @@ const userSchema = new mongoose.Schema({
     default: 'User Description here'
   },
   eventsWatching: {
-    type: Array
+    type: [ObjectId],
+    unique: true
   },
   eventsAttending: {
     type: [ObjectId],
