@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
     const data = {
       eventList
     };
-    console.log(data);
+    //console.log(data);
     res.render('index', data);
   })
   .catch(error => {
