@@ -10,15 +10,15 @@
     <p class="card-text">{{event.description}}</p>
       
     <form method="GET" action="/eventPage/{{event._id}}/edit"> 
-      <button>Edit Event Details:</button>
+      <button type="button" class="btn btn-outline-dark">Edit Event Details</button>
     </form>
-
+    <br>
     <form method="GET" action="/eventImage/{{event._id}}/edit"> 
-      <button>Edit Event Image:</button>
+      <button type="button" class="btn btn-outline-dark">Edit Event Image</button>
     </form>
-
+    <br>
     <form method="GET" action="/eventPage/{{event._id}}/delete">
-      <button>Delete Event</button>
+      <button type="button" class="btn btn-outline-danger">Delete Event</button>
     </form>
   </div>
   <ul class="list-group list-group-flush">
