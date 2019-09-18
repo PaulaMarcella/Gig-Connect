@@ -4,28 +4,53 @@ const { Router } = require('express');
 const router = Router();
 const Event = require('../models/event');
 
+//-------cloudinary configurations--------
+
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
+const multer = require('multer');
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+const storage = cloudinaryStorage({
+  cloudinary,
+  folder: '/gig-connect',
+  allowedFormats: [ 'jpg', 'png' ]
+});
+const upload = multer({ storage });
+
+//----------------------------------------
+
 router.get('/event', (req, res, next) => {
     res.render('event/event');
     console.log(req.body);
 });
 
-router.post('/event', (req, res, next) => {
+router.post('/event', upload.single('file'), (req, res, next) => {
   // Creating an event
   // console.log("The event object:", req.body);
   const eventName = req.body.event;
   const description = req.body.description;
+  const artists = req.body.artists;
   const genre = req.body.genre;
-  const location = req.body.location; 
+  const city = req.body.city; 
   const ticketURL = req.body.ticket; 
-  const imageURL = req.body.image;
+  const imageURL = req.file.url;
+  const date = req.body.date;
   
   Event.create({
     eventName,
     description,
+    artists,
     genre,
-    location,
+    city,
     ticketURL,
-    imageURL
+    imageURL,
+    date
   })
   .then(event=>{
     res.redirect('/eventPage/' + event._id);

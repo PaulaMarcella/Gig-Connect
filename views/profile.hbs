@@ -1,11 +1,17 @@
 <h1>{{user.username}}</h1>
 
+<a class="nav-link" href="/event">New Event</a>
+<a class="nav-link" href="/">Browse Events</a>
+
 <div class="card mb-3" style="max-width: 90%;">
   <div class="row no-gutters">
     <div class="col-md-4">
       <form method="GET" action="/profile/edit"> 
-  <button>Edit</button>
-</form>
+  <button>EditProfile</button>
+    </form>
+    <form method="GET" action="/image/edit"> 
+  <button>Edit Photo</button>
+    </form>
       <img src={{user.imageURL}} alt="profile photo" width="300px">
   
     </div>
@@ -13,7 +19,7 @@
       <div class="card-body">
         
         <h5 class="card-title">{{user.firstname}} {{user.lastname}}</h5>
-        <p class="card-text">User describtion here Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum soluta tenetur explicabo amet consequuntur deleniti similique non cupiditate. Impedit eos, facilis necessitatibus reprehenderit maxime optio libero numquam? Sed, voluptas praesentium.</p>
+        <p class="card-text">{{user.userDescribtion}}</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>

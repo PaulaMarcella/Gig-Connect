@@ -55,11 +55,13 @@ router.post('/profile/edit', upload.single('file'), (req, res, next) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const imageURL = req.file.url;
+  const userDescribtion = req.body.userDescribtion;
 
   const data = {
     firstname,
     lastname,
-    imageURL
+    imageURL,
+    userDescribtion
   };
 
   User.update({_id: req.session.user._id}, data)
@@ -69,6 +71,33 @@ router.post('/profile/edit', upload.single('file'), (req, res, next) => {
     })
     .catch(error => {
       console.log('Could not update user information');
+    });
+});
+
+router.get('/image/edit', (req, res, next)=> {
+  User.findById(req.session.user._id)
+  .then((image)=> {
+    console.log(image);
+    res.render('image-edit', {image});
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+});
+
+router.post('/image/edit', upload.single('file'), (req, res, next) => {
+  const imageURL = req.file.url;
+  const data = {
+    imageURL
+  };
+
+  User.update({_id: req.session.user._id}, data)
+    .then(image => {
+      console.log(image);
+      res.redirect('/profile');
+    })
+    .catch(error => {
+      console.log('Could not update profile image');
     });
 });
 

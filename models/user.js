@@ -30,7 +30,8 @@ const userSchema = new mongoose.Schema({
     trim: true
   },
   imageURL: {
-    type: String
+    type: String,
+    default: '../images/default-user-icon-4.jpg'
   },
   userDescribtion: {
     type: String,
@@ -38,17 +39,6 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-
-/*
-const cloudinary = require('cloudinary');
-userSchema.virtual('resizedURL').get(function() {
-  const user = this;
-  console.log(user);
-  const path = user.imageURL.split(`http://res.cloudinary.com/${ process.env.CLOUDINARY_API_NAME }/image/upload/`)[1];
-  
-  return cloudinary.url(path, { width: 800 });
-});
-*/
 
 const User = mongoose.model('User', userSchema);
 

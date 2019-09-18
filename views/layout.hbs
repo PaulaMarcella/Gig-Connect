@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>{{title}}</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/styles/style.css" />
 </head>
@@ -22,6 +23,7 @@
       <a class="navbar-brand mx-auto" href="/">GigConnect</a>
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      {{#unless user}}
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/signup">Sign up</a>
@@ -29,9 +31,16 @@
         <li class="nav-item active">
           <a class="nav-link" href="/login">Log in</a>
         </li>
+        {{/unless}}
+
         {{#if user }}
-           <a class="nav-item nav-link" href="/logout" tabindex="-1">Log Out</a>
-           <a class="nav-item nav-link" href="/profile" tabindex="-1">Profile</a>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-item nav-link" href="/logout" tabindex="-1">Log Out</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-item nav-link" href="/profile" tabindex="-1">Profile</a>
+        </li>  
         {{/if}}
       </ul>
     </div>

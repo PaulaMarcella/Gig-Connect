@@ -5,27 +5,24 @@
   <div class="row no-gutters">
     <div class="col-md-4">
       <img src={{user.imageURL}} alt="profile photo" width="300px">
-      <label for="profile-image">Update Profile Photo</label>
-    <input id="profile-image" type="file" name="file">  
-  
     </div>
     <div class="col-md-8">
       <div class="card-body">
         
     <label for="firstname">Your First Name:</label>
-    <input type="text" name="firstname" placeholder={{user.firstname}}>
+    <input type="text" name="firstname" value={{user.firstname}}>
 
     <label for="lastname">Your Last Name:</label>
-    <input type="text" name="lastname" placeholder={{user.lastname}}>
+    <input type="text" name="lastname" value={{user.lastname}}>
 
     <label for="userDescribtion">Your Story:</label>
-    <textarea type="textfield" name="userDescribtion" placeholder="Tell your fellow music fans something about yourself"></textarea>
+    <textarea type="textfield" name="userDescribtion" value="Your Story here"></textarea>
 
       </div>
+    <button>Update Information</button>
     </div>
   </div>
 </div>
 
-    <button>Update Information</button>
 
 </form>

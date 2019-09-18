@@ -7,25 +7,34 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  artists: {
+    type: String //change to array
+    //required: true
+  },
   description: {
     type: String,
     required: true
   },
   genre: {
     type: String,
-    required: true
+    required: true //change to array
   },
-  location: {
+  city: {
     type: String,
     required: true
   },
   ticketURL: {
-    type: String,
-    required: true
+    type: String
   },
   imageURL: {
     type: String,
-    required: true
+    default: '../images/joshua-hoehne-6M9jjeZjscE-unsplash.jpg'
+    //required: true
+  },
+  date: {
+    type: Date
+    //required: true
+    //
   }
 });
 
