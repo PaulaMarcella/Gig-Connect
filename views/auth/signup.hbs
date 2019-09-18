@@ -3,7 +3,7 @@
 <br>
 
 <div class="container">
-<form id="form" method="POST" action="/signup" enctype="multipart/form-data">
+<form id="form" method="POST" action="/signup">
   <div class="form-group">
     <label for="firstname">Name</label>
     <input type="text" name="firstname" class="form-control" placeholder="First Name">
@@ -25,10 +25,7 @@
     <label for="password">Password</label>
     <input type="password" name="password" class="form-control" placeholder="Choose your password">
   </div>
-  <div>
-    <label for="profile-image">Upload Your Profile Photo</label>
-    <input id="profile-image" type="file" name="file">
-  </div>
+  <div class="form-group">
   <button type="submit" class="btn btn-primary">Register</button>
 </form>
 </div>
