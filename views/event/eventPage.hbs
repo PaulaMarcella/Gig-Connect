@@ -8,10 +8,10 @@
   <div class="card-body">
     <h5 class="card-title">{{event.eventName}}</h5>
     <p class="card-text">{{event.description}}</p>
-      <form method="GET" action="/eventPage/edit"> 
+      <form method="GET" action="/eventPage/{{event._id}}/edit"> 
   <button>Edit Event Details:</button>
     </form>
-    <form method="GET" action="/eventimage/edit"> 
+    <form method="GET" action="/eventImage/{{event._id}}/edit"> 
   <button>Edit Event Image:</button>
     </form>
   </div>
