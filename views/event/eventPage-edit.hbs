@@ -1,21 +1,44 @@
-<h1>{{event.eventName}}</h1>
-<form id="form" method="POST" action="/eventimage/edit" enctype="multipart/form-data">
+<br>
+<h4 class="form-group">Edit {{event.eventName}}:</h4>
+<br>
 
-<div class="card mb-3" style="max-width: 90%;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src={{event.imageURL}} alt="event photo" width="600px">
-      <label for="event-image">Update Event Photo</label>
-    <input id="event-image" type="file" name="file">  
-  
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-      </div>
-    </div>
+<form id="form" method="POST" action="/eventPage/{{event._id}}/edit">
+<div class="container">
+
+
+<form class="px-5">
+  <div class="form-group">
+    <label for="event">Event</label>
+    <input type="text" class="form-control" name="event" value="{{event.eventName}}">
   </div>
-</div>
-
-    <button>Update Information</button>
-
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" name="description" rows="3" value="{{event.description}}">{{event.description}}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="genre">Genre</label>
+    <input type="text" class="form-control" name="genre" value="{{event.genre}}">
+  </div>
+  <div class="form-group">
+    <label for="artists">Artist(s)</label>
+    <input type="text" class="form-control" name="artists" value="{{event.artists}}"></input>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" class="form-control" name="city" value="{{event.city}}"></input>
+  </div>
+  <div class="form-group">
+    <label for="ticket">Ticket URL</label>
+    <input type="text" class="form-control" name="ticket" value="{{event.ticketURL}}"></input>
+  </div>
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input type="date" class="form-control" name="date" value="{{event.date}}"></input>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<br>
+</form>
+
+</div>

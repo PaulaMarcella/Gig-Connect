@@ -36,6 +36,12 @@ const userSchema = new mongoose.Schema({
   userDescribtion: {
     type: String,
     default: 'User Describtion here'
+  },
+  eventsWatching: {
+    type: Array
+  },
+  eventsAttending: {
+    type: Array
   }
 });
 

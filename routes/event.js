@@ -65,8 +65,8 @@ router.post('/event', upload.single('file'), (req, res, next) => {
 // Note: Whatever goes after ":"" in the route is being accessed
 // with the same name in req.params.THENAME
 
-router.get("/eventPage/:id", (req, res, next) => {
-  console.log(req.params.id);
+router.get("/eventPage/:id", checkLogin, (req, res, next) => {
+  //console.log(req.params.id);
   Event.findById(req.params.id)
   .then((event) => {
     res.render('event/eventPage', {event});
@@ -76,10 +76,11 @@ router.get("/eventPage/:id", (req, res, next) => {
   });
 });
 
-router.get("/eventPage/:id/edit", (req, res, next) => {
-  console.log(req.params.id);
+router.get("/eventPage/:id/edit", checkLogin, (req, res, next) => {
+  //console.log(req.params.id);
   Event.findById(req.params.id)
   .then((event) => {
+    // console.log(event)
     res.render('event/eventPage-edit', {event});
   })
   .catch((error) => {
@@ -87,5 +88,34 @@ router.get("/eventPage/:id/edit", (req, res, next) => {
   });
 });
 
+router.post("/eventPage/:id/edit", (req, res, next) => {
+  const eventName = req.body.event;
+  const description = req.body.description;
+  const artists = req.body.artists;
+  const genre = req.body.genre;
+  const city = req.body.city; 
+  const ticketURL = req.body.ticket;
+  const date = req.body.date;
+  const eventId= req.params.id;
+  
+  const data = {
+    eventName,
+    description,
+    artists,
+    genre,
+    city,
+    ticketURL,
+    date };
+    //console.log("DATA TO BE EDIT", data)
+
+  Event.findByIdAndUpdate(eventId, data)
+  .then(event => {
+    console.log(event);
+    res.redirect('/eventPage/' + eventId);
+  })
+  .catch(error => {
+    console.log('Could not update event information', error);
+  });
+});
 
 module.exports = router;
