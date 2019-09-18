@@ -5,7 +5,6 @@ const router = Router();
 const Event = require('../models/event');
 
 const checkLogin = require('./../controllers/check-login');
-const checkCreator = require('./../controllers/check-creator');
 
 //-------cloudinary configurations--------
 
@@ -42,9 +41,8 @@ router.post('/event', upload.single('file'), (req, res, next) => {
   const genre = req.body.genre;
   const city = req.body.city; 
   const ticketURL = req.body.ticket; 
-  const imageURL = req.file.url;
+  const imageURL = req.file && req.file.url;
   const date = req.body.date;
-  const creator = req.session.user;
   
   Event.create({
     eventName,
@@ -54,8 +52,7 @@ router.post('/event', upload.single('file'), (req, res, next) => {
     city,
     ticketURL,
     imageURL,
-    date,
-    creator
+    date
   })
   .then(event=>{
     res.redirect('/eventPage/' + event._id);
@@ -80,6 +77,7 @@ router.get("/eventPage/:id", checkLogin, (req, res, next) => {
 });
 
 router.get("/eventPage/:id/edit", checkLogin, (req, res, next) => {
+  // console.log(req.params.id);
   Event.findById(req.params.id)
   .then((event) => {
     // console.log(event)
@@ -90,19 +88,19 @@ router.get("/eventPage/:id/edit", checkLogin, (req, res, next) => {
   });
 });
 
-router.get("/eventPage/:id/delete", checkCreator, (req, res, next) => {
-  const eventId = req.params.id;
+router.get("/eventPage/:id/delete", (req, res, next) => {
+  let eventId = req.params.id;
 // Grab the ID and use it as an argument for deleting
   Event.findByIdAndDelete(eventId)
     .then(() => {
-      res.redirect('/event');
+      res.redirect("/celebrities");
     })
     .catch((error) => {
       console.log(error);
     });
 });
 
-router.post("/eventPage/:id/edit", checkCreator, (req, res, next) => {
+router.post("/eventPage/:id/edit", (req, res, next) => {
   const eventName = req.body.event;
   const description = req.body.description;
   const artists = req.body.artists;
