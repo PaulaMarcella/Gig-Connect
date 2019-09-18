@@ -33,9 +33,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: '../images/default-user-icon-4.jpg'
   },
-  userDescribtion: {
+  userDescription: {
     type: String,
-    default: 'User Describtion here'
+    default: 'User Description here'
   },
   eventsWatching: {
     type: Array
