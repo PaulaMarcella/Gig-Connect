@@ -77,7 +77,7 @@ router.get("/eventPage/:id", checkLogin, (req, res, next) => {
 });
 
 router.get("/eventPage/:id/edit", checkLogin, (req, res, next) => {
-  //console.log(req.params.id);
+  // console.log(req.params.id);
   Event.findById(req.params.id)
   .then((event) => {
     // console.log(event)
@@ -86,6 +86,18 @@ router.get("/eventPage/:id/edit", checkLogin, (req, res, next) => {
   .catch((error) => {
     console.log(error);
   });
+});
+
+router.get("/eventPage/:id/delete", (req, res, next) => {
+  let eventId = req.params.id;
+// Grab the ID and use it as an argument for deleting
+  Event.findByIdAndDelete(eventId)
+    .then(() => {
+      res.redirect("/celebrities");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 router.post("/eventPage/:id/edit", (req, res, next) => {
