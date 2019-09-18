@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 const User = require('./../models/user');
+const checkLogin = require('./../controllers/check-login');
 
 //-------cloudinary configurations--------
 
@@ -91,7 +92,6 @@ router.post('/image/edit', upload.single('file'), (req, res, next) => {
 
   User.update({_id: req.session.user._id}, data)
     .then(image => {
-      console.log(image);
       res.redirect('/profile');
     })
     .catch(error => {
@@ -110,4 +110,19 @@ router.get('/profile/attending', (req, res, next) => {
   });
 });
 
-module.exports = router;
+router.get('/eventPageAttend/:id', checkLogin, (req, res, next) => {
+  const eventId = req.params.id;
+  console.log(eventId);
+  User.findByIdAndUpdate(req.session.user._id, {eventsAttending: eventId})
+    .then(()=> {
+      res.render('profile-attending');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+  
+  
+  
+  module.exports = router;

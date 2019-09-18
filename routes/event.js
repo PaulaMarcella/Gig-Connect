@@ -130,4 +130,5 @@ router.post("/eventPage/:id/edit", (req, res, next) => {
   });
 });
 
+
 module.exports = router;

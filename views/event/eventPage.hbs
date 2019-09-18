@@ -28,13 +28,13 @@
     <li class="list-group-item">Date: {{event.date}}</li>
     <li class="list-group-item"><a href={{event.ticketURL}} target="_blank" class="card-link">Buy Ticket</a></li>
   </ul>  
+<form method="GET" action="/eventPageAttend/{{event._id}}">
+      <button id="attend-switch" type="submit" class="btn btn-outline-dark">Attend Event</button>
+</form>
 
-  <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1">
-  <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-</div>
-<div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
-  <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+<form method="GET" action="/eventPageAttend/{{event._id}}">
+      <button id="watch-switch" type="submit" class="btn btn-outline-dark">Follow Event</button>
+</form>
+
 </div>
 </div>
