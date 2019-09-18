@@ -51,16 +51,15 @@ router.get('/profile/edit', (req, res, next)=> {
   });
 });
 
-router.post('/profile/edit', upload.single('file'), (req, res, next) => {
+router.post('/profile/edit', (req, res, next) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
-  const imageURL = req.file.url;
   const userDescribtion = req.body.userDescribtion;
 
   const data = {
     firstname,
     lastname,
-    imageURL,
+
     userDescribtion
   };
 

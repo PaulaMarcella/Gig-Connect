@@ -44,7 +44,7 @@ router.post('/signup', upload.single('file'), (req, res, next) => {
   const email = req.body.email;
   const username = req.body.username;
   const passwordHash = req.body.password;
-  const imageURL = req.file.url;
+  //const imageURL = req.file.url;
   
   bcrypt.hash(passwordHash, 10)
       .then(hash => {
@@ -53,10 +53,10 @@ router.post('/signup', upload.single('file'), (req, res, next) => {
           lastname,
           email,
           username,
-          passwordHash: hash,
-          imageURL
+          passwordHash: hash
+          //imageURL
         });
-        //res.render('profile');
+        //res.redirect(/profile)
       })
       .catch(error => {
         console.log('Could not sign up user', error);
