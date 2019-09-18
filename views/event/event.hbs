@@ -1,32 +1,39 @@
-<h4>Propose a new Event</h4>
+<h4>Share Your Event with the World</h4>
 
-<form id="eventCreator" method="POST" action="/event" enctype="multipart/form-data">
+<br>
 
-    <label for="event">Event Name:</label>
-    {{!-- The name in the input defines the name of the req.body. e.g. req.body.event --}}
-    <input type="text" name="event" placeholder="Name your event">
-
-    <label for="description">Description:</label>
-    <input type="text" name="description" placeholder="Description">
-
-    <label for="genre">Add Genre:</label>
-    <input type="text" name="genre" placeholder="Choose a genre">
-
-    <label for="artists">Add Artist(s):</label>
-    <input type="text" name="artists" placeholder="Artist(s)">
-
-    <label for="city">City:</label>
-    <input type="text" name="city" placeholder="Choose a City">
-
-    <label for="ticket">Buy Ticket:</label>
-    <input type="text" name="ticket" placeholder="Provide ticket url">
-
-    <label for="date">Date:</label>
-    <input type="date" name="date" placeholder="Date">
-
+<form>
+  <div class="form-group">
+    <label for="event">Event</label>
+    <input type="text" class="form-control" name="event" placeholder="Name your event">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" name="description" rows="3" placeholder="Provide a short description of the event you're planning"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="genre">Musical Genre</label>
+    <input type="text" class="form-control" name="genre" placeholder="Name the musical genre of your event">
+  </div>
+  <div class="form-group">
+    <label for="artists">Artist(s)</label>
+    <input type="text" class="form-control" name="artists" placeholder="Name the artist(s) that will headline your event"></input>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" class="form-control" name="city" placeholder="Share the city where your event will be hosted"></input>
+  </div>
+  <div class="form-group">
+    <label for="ticket">Ticket URL</label>
+    <input type="text" class="form-control" name="ticket" placeholder="Provide the URL to buy the ticket"></input>
+  </div>
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input type="date" class="form-control" name="date" placeholder="Date"></input>
+  </div>
+  <div class="form-group">
     <label for="event-image">Upload Your Event Photo</label>
-    <input id="event-image" class="form-control" type="file" name="file">
-
-    <button>Submit</button>
-  
+    <input id="event-image" class="form-control-file" type="file" name="file"></input>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
