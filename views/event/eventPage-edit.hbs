@@ -1,0 +1,21 @@
+<h1>{{event.eventName}}</h1>
+<form id="form" method="POST" action="/eventimage/edit" enctype="multipart/form-data">
+
+<div class="card mb-3" style="max-width: 90%;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src={{event.imageURL}} alt="event photo" width="600px">
+      <label for="event-image">Update Event Photo</label>
+    <input id="event-image" type="file" name="file">  
+  
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+    <button>Update Information</button>
+
+</form>

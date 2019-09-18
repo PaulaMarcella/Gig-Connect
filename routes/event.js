@@ -65,7 +65,7 @@ router.post('/event', upload.single('file'), (req, res, next) => {
 // Note: Whatever goes after ":"" in the route is being accessed
 // with the same name in req.params.THENAME
 
-router.get("/eventPage/:id", (req,res,next) => {
+router.get("/eventPage/:id", (req, res, next) => {
   console.log(req.params.id);
   Event.findById(req.params.id)
   .then((event) => {
@@ -75,5 +75,17 @@ router.get("/eventPage/:id", (req,res,next) => {
     console.log(error);
   });
 });
+
+router.get("/eventPage/:id/edit", (req, res, next) => {
+  console.log(req.params.id);
+  Event.findById(req.params.id)
+  .then((event) => {
+    res.render('event/eventPage-edit', {event});
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+});
+
 
 module.exports = router;

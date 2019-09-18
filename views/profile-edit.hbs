@@ -1,5 +1,5 @@
 <h1>{{user.username}}</h1>
-<form id="form" method="POST" action="/profile/edit" enctype="multipart/form-data">
+<form id="form" method="POST" action="/profile/edit">
 
 <div class="card mb-3" style="max-width: 90%;">
   <div class="row no-gutters">
@@ -16,9 +16,9 @@
     <input type="text" name="lastname" value={{user.lastname}}>
 
     <label for="userDescribtion">Your Story:</label>
-    <textarea type="textfield" name="userDescribtion" value="Your Story here"></textarea>
+    <textarea type="textfield" name="userDescribtion" value="{{user.userDescribtion}}"></textarea>
 
-      </div>
+    </div>
     <button>Update Information</button>
     </div>
   </div>

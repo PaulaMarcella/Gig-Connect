@@ -59,7 +59,6 @@ router.post('/profile/edit', (req, res, next) => {
   const data = {
     firstname,
     lastname,
-
     userDescribtion
   };
 
@@ -69,7 +68,7 @@ router.post('/profile/edit', (req, res, next) => {
       res.redirect('/profile');
     })
     .catch(error => {
-      console.log('Could not update user information');
+      console.log('Could not update user information', error);
     });
 });
 
