@@ -55,8 +55,16 @@ router.post('/signup', upload.single('file'), (req, res, next) => {
           username,
           passwordHash: hash
           //imageURL
+        })
+        .then((user)=> {
+          req.session.user = {
+            _id: user._id 
+          };
+          res.redirect('/profile');
+        })
+        .catch(error => {
+          console.log('Could not redirect', error);
         });
-        //res.redirect(/profile)
       })
       .catch(error => {
         console.log('Could not sign up user', error);
