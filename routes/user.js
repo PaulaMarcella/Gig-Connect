@@ -54,12 +54,12 @@ router.get('/profile/edit', (req, res, next)=> {
 router.post('/profile/edit', (req, res, next) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
-  const userDescribtion = req.body.userDescribtion;
+  const userDescription = req.body.userDescription;
 
   const data = {
     firstname,
     lastname,
-    userDescribtion
+    userDescription
   };
 
   User.update({_id: req.session.user._id}, data)
