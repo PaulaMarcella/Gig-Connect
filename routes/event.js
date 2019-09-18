@@ -34,7 +34,7 @@ router.get('/event', checkLogin, (req, res, next) => {
 
 router.post('/event', upload.single('file'), (req, res, next) => {
   // Creating an event
-  // console.log("The event object:", req.body);
+  console.log("The event object:", req.body);
   const eventName = req.body.event;
   const description = req.body.description;
   const artists = req.body.artists;
