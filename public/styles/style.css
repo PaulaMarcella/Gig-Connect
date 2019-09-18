@@ -20,4 +20,11 @@ a {
   align-items: center;
 }
 
+.card-resizer {
+  display: flex;
+  justify-content: center;
+  width: 35%;
+  height: 35%;
+}
+
 /*# sourceMappingURL=style.css.map */
