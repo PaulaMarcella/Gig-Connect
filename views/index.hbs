@@ -5,9 +5,21 @@
     <img class="card-img" src="images/searchImage.jpeg" alt="Card image">
     <div class="card-img-overlay">
       <h5 class="card-title">Search</h5>
-      <p class="card-text">Search an event by location, artist, etc...</p>
-      <input type="text" name="search">
-      <button>Search</button>
+      <p class="card-text">What are you looking for?</p>
+      <form method="GET" action="/event-search-location">
+        <div class="form-group">
+          <label for="querySearchOptions"></label>
+          <select class="form-control" id="querySearchOptions">
+            <option>Event</option>
+            <option>Artist</option>
+            <option>Genre</option>
+            <option>City</option>
+            <option>Date</option>
+          </select>
+        </div>
+        <input type="text" name="location">
+        <button>Search</button>
+      </form>
     </div>
   </div>
 </div>
