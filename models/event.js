@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const eventSchema = new mongoose.Schema({
   eventName: {
@@ -35,6 +36,9 @@ const eventSchema = new mongoose.Schema({
     type: Date
     //required: true
     //
+  },
+  creator: {
+    type: ObjectId
   }
 });
 
