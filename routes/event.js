@@ -4,6 +4,8 @@ const { Router } = require('express');
 const router = Router();
 const Event = require('../models/event');
 
+const checkLogin = require('./../controllers/check-login');
+
 //-------cloudinary configurations--------
 
 const cloudinary = require('cloudinary');
@@ -25,7 +27,7 @@ const upload = multer({ storage });
 
 //----------------------------------------
 
-router.get('/event', (req, res, next) => {
+router.get('/event', checkLogin, (req, res, next) => {
     res.render('event/event');
     console.log(req.body);
 });
