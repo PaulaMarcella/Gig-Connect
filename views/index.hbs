@@ -1,14 +1,15 @@
-<div class="jumbotron container my-5 bg-transparent form-group">
+<div class="index-background">
+<div class="jumbotron container bg-transparent form-group text-white">
   <h1 class="display-5 mx-5 my-5">Connect with people through Music</h1>
-  {{!-- It uses utility classes for typography and spacing to space content out within the larger container. --}}
   <p>GigConnect is the place for you: connect with Gigs, connect with People.</p>
   <div class="d-flex justify-content-center flex-column mx-5 my-5">
     <a class=" btn btn-primary btn-lg" href="/event-search" role="button">Browse Events</a>
-    
+
     {{#if user}}
-      <a class="form-group" href="/event">or post your event</a>
+    <a class="form-group" href="/event">or post your event</a>
     {{else}}
-      <a class="form-group" href="/signup">or sign up to post event</a>
+    <a class="form-group" href="/signup">or sign up to post event</a>
     {{/if}}
   </div>
+</div>
 </div>

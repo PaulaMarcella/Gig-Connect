@@ -1,39 +1,44 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif; 
-  background-image: url('../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg');
-  background-size: cover;
+  font-family: 'Montserrat', Arial, sans-serif;
   color: black;
-}
+  background-color: white; }
 
-.card { background-color: rgba(22, 3, 3, 0.616); }
-.card-header, .card-footer { opacity: 1}
-.card { color: white; }
+.index-background {
+  background-image: url("../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg");
+  background-size: cover; }
 
+.card {
+  background-color: rgba(22, 3, 3, 0.616); }
+
+.card-header, .card-footer {
+  opacity: 1; }
+
+.card {
+  color: white; }
 
 .cardGrid {
   display: flex;
-  justify-content: space-around;
-}
+  justify-content: space-around; }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
+  align-items: center; }
 
 .card-resizer {
   display: flex;
   justify-content: center;
-  width: 35%;
-}
+  width: 35%; }
 
-#concert-detail-card{
-  margin: 50px;
-}
+#concert-detail-card {
+  margin: 50px; }
 
 .display-centering-code {
   display: flex;
-  justify-content: center;
-}
+  justify-content: center; }
+
+.background-force {
+  background-color: black; }
+
 /*# sourceMappingURL=style.css.map */
