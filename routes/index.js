@@ -18,11 +18,10 @@ router.get('/', (req, res, next) => {
   });
 });
 
-
 router.get('/event-search', (req, res, next) => {
-  const searchResult = req.query.search;
-  //console.log("QUERY RESULT", searchResult);
-  Event.find({genre: searchResult})
+  const searchResult = req.query.city;
+  console.log("QUERY RESULT", searchResult);
+  Event.find({city: searchResult})
   .then(eventList => {
     const data = {
       eventList
@@ -34,6 +33,24 @@ router.get('/event-search', (req, res, next) => {
     next(error);
   });
 });
+
+// Previous versions below:
+
+// router.get('/event-search', (req, res, next) => {
+//   const searchResult = req.query.search;
+//   //console.log("QUERY RESULT", searchResult);
+//   Event.find({genre: searchResult})
+//   .then(eventList => {
+//     const data = {
+//       eventList
+//     };
+//     console.log(data);
+//     res.render('index', data);
+//   })
+//   .catch(error => {
+//     next(error);
+//   });
+// });
 
 
 // router.get('/event-search', (req, res, next) => {
