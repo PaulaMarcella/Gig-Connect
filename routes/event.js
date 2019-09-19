@@ -28,6 +28,10 @@ const upload = multer({ storage });
 
 //----------------------------------------
 
+
+
+
+
 router.get('/event', checkLogin, (req, res, next) => {
     res.render('event/event');
     console.log(req.body);
@@ -127,7 +131,7 @@ router.post("/eventPage/:id/edit", checkCreator, (req, res, next) => {
   // Grab the ID and use it as an argument for deleting
     Event.findByIdAndDelete(eventId)
       .then(() => {
-        res.redirect('/');
+        res.redirect('/browse');
       })
       .catch((error) => {
         console.log(error);
