@@ -16,12 +16,19 @@ const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const eventsRouter = require('./routes/event');
 const userRouter = require('./routes/user');
+const hbs = require('hbs');
 
 const app = express();
 
 // Setup view engine
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(express.static(join(__dirname, 'public')));

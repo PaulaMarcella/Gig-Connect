@@ -21,14 +21,16 @@
     
 
     
+    {{#ifEquals user._id event.creator}}
 <div class="container d-flex justify-content-center">
   <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
       <button type="submit" class="btn btn-primary my-2">Edit Event Details</button>
     </form>
+
   <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/delete">
       <button type="submit" class="btn btn-danger my-2">Delete Event</button>
     </form>
-
+{{/ifEquals}}
     
   </div>
 </div>
