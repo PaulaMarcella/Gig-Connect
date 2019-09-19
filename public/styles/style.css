@@ -3,12 +3,13 @@ body {
   font-family: 'Montserrat', Arial, sans-serif; 
   background-image: url('../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg');
   background-size: cover;
-  color: white;
+  color: black;
 }
 
- navbar{
-  color: #00b7ff; 
-}
+.card { background-color: rgba(231, 214, 214, 0.589); }
+.card-header, .card-footer { opacity: 1}
+.card { color: black; }
+
 
 .cardGrid {
   display: flex;
@@ -26,6 +27,11 @@ body {
   justify-content: center;
   width: 35%;
   height: 35%;
+}
+
+#concert-detail-card{
+  margin: 50px;
+  
 }
 
 /*# sourceMappingURL=style.css.map */

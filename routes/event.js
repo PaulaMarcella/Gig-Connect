@@ -29,9 +29,6 @@ const upload = multer({ storage });
 //----------------------------------------
 
 
-
-
-
 router.get('/event', checkLogin, (req, res, next) => {
     res.render('event/event');
     console.log(req.body);
@@ -62,6 +59,7 @@ router.post('/event', upload.single('file'), (req, res, next) => {
     creator
   })
   .then(event=>{
+    console.log(event);
     res.redirect('/eventPage/' + event._id);
   })
   .catch(error=>{

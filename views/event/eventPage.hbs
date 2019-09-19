@@ -1,28 +1,63 @@
-<br>
 
+
+{{!-- EVENT IMAGE AND TITLE --}}
+
+<div id="concert-detail-card" class="container">
+
+<div class="card border-0">
+    <h5 class="card-title">{{event.eventName}}</h5>   
+    <p class="card-text">proposed by {{event.creator}}</p>
+
+<div class="card text-center">
+
+  <div class="card-body">
+    <h5 class="card-title">{{event.eventName}}</h5>
+    <p class="card-text"><strong>Artists playing: </strong>{{event.artist}}</p>
+    <p class="card-text"><strong>Genre of this event: </strong>{{event.genre}}</p>
+    <p class="card-text"><strong>Playing On: </strong>{{event.date}}</p>
+    <p class="card-text">{{event.description}}</p>
+    <a href="{{event.ticket.URL}}">GET YOUR TICKET</a>
+
+    
+
+    
+<div class="container d-flex justify-content-center">
+  <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
+      <button type="submit" class="btn btn-primary my-2">Edit Event Details</button>
+    </form>
+  <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/delete">
+      <button type="submit" class="btn btn-danger my-2">Delete Event</button>
+    </form>
+
+    
+  </div>
+</div>
+  </div>
+</div>
+</div>
+
+{{!-- EVENT IMAGE AND TITLE --}}
+{{!-- 
 <div class="card" style="width: 30rem;">
   <img src="{{event.imageURL}}" class="card-img-top" alt="Event Image" width="200px">
   <div class="card-body">
     <h5 class="card-title">{{event.eventName}}</h5>
     <p class="card-text">{{event.description}}</p>
 
-    {{!-- {{#if event.creator}}
 
-    <h1>SHOW</h1>
-
-    {{/if}} --}}
-
-
-    <small><p class="card-text">{{event.crator}}</p></small>
+    <small><p class="card-text">{{event.creator}}</p></small>
     
-      
+  
     <form method="GET" action="/eventPage/{{event._id}}/edit"> 
       <button type="submit" class="btn btn-outline-dark">Edit Event Details</button>
     </form>
     <br>
+  
     <form method="GET" action="/eventPage/{{event._id}}/delete">
       <button type="submit" class="btn btn-outline-danger">Delete Event</button>
     </form>
+  
+
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Artists: {{event.artists}}</li>
@@ -34,22 +69,33 @@
 <form method="POST" action="/eventPageAttend/{{event._id}}">
       <button id="attend-switch" type="submit" class="btn btn-outline-dark">Attend Event</button>
 </form>
+</div> --}}
 
-<form method="POST" action="/eventPageFollow">
-      <button id="watch-switch" type="submit" class="btn btn-outline-dark">Follow Event</button>
-</form>
+{{!-- ---------COMMENT SHOW---------- --}}
 
-{{!-- ---------COMMENT FORM---------- --}}
+{{#each event.comments}}
+<div class="card">
+  <div class="card-header">
+    <h5>{{this.commentTitle}}</h5>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{this.commentBody}}</p>
+      <footer class="blockquote-footer">{{this.commentAuthor}}</footer>
+    </blockquote>
+  </div>
+</div>
 
-<div>
-  {{#each event.comments}}
     <h5>{{this.commentTitle}}</h5>
    <p>{{this.commentBody}}</p>
    <small><p>{{this.commentAuthor}}</p></small>
   {{/each}}
 </div>
 
-<form method="POST" action="/add-comment/{{event._id}}">
+{{!-----------COMMENT FORM---------- --}}
+
+<div>
+<form class="form-grup" method="POST" action="/add-comment/{{event._id}}">
   <label for="commenttitle">Comment Title</label>
   <input type="text" name="commenttitle" value="Title">
 
@@ -58,5 +104,4 @@
 
   <button class="btn btn-primary">Submit Comment</button>
 </form>
-</div>
 </div>
