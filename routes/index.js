@@ -4,29 +4,34 @@ const { Router } = require('express');
 const router = Router();
 const Event = require('../models/event');
 
-router.get('/browse', (req, res, next) => {
-  Event.find()
-  .then(eventList => {
-    const data = {
-      eventList
-    };
-    //console.log(data);
-    res.render('browse', data);
-  })
-  .catch(error => {
-    next(error);
-  });
-});
+// router.get('/browse', (req, res, next) => {
+//   Event.find()
+//   .then(eventList => {
+//     const data = {
+//       eventList
+//     };
+//     //console.log(data);
+//     res.render('browse', data);
+//   })
+//   .catch(error => {
+//     next(error);
+//   });
+// });
 
 router.get('/event-search', (req, res, next) => {
-  const searchResult = req.query.city;
-  console.log("QUERY RESULT", searchResult);
-  Event.find({city: searchResult})
+  const searchResult = req.query.search;
+  const typeResult = req.query.type;
+
+  Event.find({})
+  .then(allEvents =>{
+    // console.log("ALL EVENTS",allEvents);
+     return allEvents.filter(event => event[typeResult] === searchResult);
+  })
   .then(eventList => {
+    // console.log("FILTERED EVENTS",eventList);
     const data = {
       eventList
     };
-    console.log(data);
     res.render('browse', data);
   })
   .catch(error => {

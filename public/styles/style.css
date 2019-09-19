@@ -25,7 +25,10 @@ body {
   display: flex;
   justify-content: center;
   width: 35%;
-  height: 35%;
 }
 
+.display-centering-code {
+  display: flex;
+  justify-content: center;
+}
 /*# sourceMappingURL=style.css.map */

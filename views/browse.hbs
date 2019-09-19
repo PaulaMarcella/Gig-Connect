@@ -1,30 +1,35 @@
 <br>
-{{!-- _________Filter and search function________ --}}
-<div class="card-resizer">
-  <div class="card bg-dark text-white">
-    <img class="card-img" src="images/searchImage.jpeg" alt="Card image">
-    <div class="card-img-overlay">
-      <h5 class="card-title">Search</h5>
-      <p class="card-text">What are you looking for?</p>
-      <form method="GET" action="/event-search">
-        <div class="form-group">
-          <label for="querySearchOptions"></label>
-          <select class="form-control" id="querySearchOptions">
-            <option>Event</option>
-            <option>Artist</option>
-            <option>Genre</option>
-            <option>City</option>
-            <option>Date</option>
-          </select>
-        </div>
-        <input type="text" name="search">
-        <button>Search</button>
-      </form>
+<div class="display-centering-code">
+  {{!-- _________Filter and search function________ --}}
+  <div class="card-resizer">
+    <div class="card bg-dark text-white">
+      <img class="card-img" src="images/searchImage.jpeg" alt="Card image">
+      <div class="card-img-overlay">
+        <h5 class="card-title">Search</h5>
+        <p class="card-text">What are you looking for?</p>
+
+        <form method="GET" action="/event-search">
+          <div class="form-group">
+            <label for="querySearchOptions"></label>
+            <select class="form-control" id="querySearchOptions" name='type'>
+              <option selected="true" disabled="disabled" value="event">---please choose an option --- </option>
+              <option value="artist">Artist</option>
+              <option value="genre">Genre</option>
+              <option value="city">City</option>
+              <option value="date">Date</option>
+            </select>
+
+          </div>
+          <input type="text" name="search">
+          <button>Search</button>
+        </form>
+
+      </div>
     </div>
   </div>
+  <br>
 </div>
 <br>
-
 
 {{!-- _________Filter and search function________ --}}
 
