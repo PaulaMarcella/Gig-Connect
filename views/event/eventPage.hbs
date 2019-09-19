@@ -8,6 +8,15 @@
   <div class="card-body">
     <h5 class="card-title">{{event.eventName}}</h5>
     <p class="card-text">{{event.description}}</p>
+    {{#if event.creator}}
+
+    <h1>SHOW</h1>
+
+    {{/if}}
+
+
+    <small><p class="card-text">{{event.crator}}</p></small>
+    
       
     <form method="GET" action="/eventPage/{{event._id}}/edit"> 
       <button type="submit" class="btn btn-outline-dark">Edit Event Details</button>
@@ -36,7 +45,7 @@
 
 <div>
   {{#each event.comments}}
-  <h5>{{this.commentTitle}}</h5>
+    <h5>{{this.commentTitle}}</h5>
    <p>{{this.commentBody}}</p>
    <small><p>{{this.commentAuthor}}</p></small>
   {{/each}}

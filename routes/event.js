@@ -44,6 +44,7 @@ router.post('/event', upload.single('file'), (req, res, next) => {
   const ticketURL = req.body.ticket; 
   const imageURL = req.file && req.file.url;
   const date = req.body.date;
+  const creator = req.session.user._id;
   
   Event.create({
     eventName,
@@ -53,7 +54,8 @@ router.post('/event', upload.single('file'), (req, res, next) => {
     city,
     ticketURL,
     imageURL,
-    date
+    date,
+    creator
   })
   .then(event=>{
     res.redirect('/eventPage/' + event._id);
@@ -143,7 +145,7 @@ router.post('/add-comment/:id', checkLogin, (req, res, next) => {
     commentTitle,
     commentAuthor
     };
-    console.log("COMMENT DATA", data)
+    console.log("COMMENT DATA", data);
     Event.findByIdAndUpdate(eventId ,{
       $push: {
         comments: {
@@ -153,7 +155,7 @@ router.post('/add-comment/:id', checkLogin, (req, res, next) => {
         }}
     })
       .then(event => {
-        console.log("UPDATED EVENT", event)
+        console.log("UPDATED EVENT", event);
         res.redirect("/eventPage/" + eventId);
       })
       .catch((error) => {

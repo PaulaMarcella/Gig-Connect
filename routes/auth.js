@@ -38,7 +38,7 @@ router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
 });
 
-router.post('/signup', upload.single('file'), (req, res, next) => {
+router.post('/signup', (req, res, next) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const email = req.body.email;

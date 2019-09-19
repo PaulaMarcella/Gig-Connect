@@ -92,7 +92,7 @@ router.post('/image/edit', upload.single('file'), (req, res, next) => {
   };
 
   User.update({_id: req.session.user._id}, data)
-    .then(image => {
+    .then(() => { //removed image
       res.redirect('/profile');
     })
     .catch(error => {
@@ -111,7 +111,7 @@ router.get('/profile/attending', (req, res, next) => {
   });
 });
 
-router.get('/eventPageAttend/:id', checkLogin, (req, res, next) => {
+router.post('/eventPageAttend/:id', checkLogin, (req, res, next) => {
   const eventId = req.params.id;
   console.log(eventId);
 
@@ -122,17 +122,18 @@ router.get('/eventPageAttend/:id', checkLogin, (req, res, next) => {
     .catch((error) => {
       console.log(error);
     });
-
-  Event.findById(eventId)
-  .then((event)=> {
-    res.render('profile-attending', {event});
-  })
-  .catch((error) => {
-    console.log(error);
   });
-});
 
-  
+  router.get('/eventPageAttend/:id', (req, res, next)=> {
+    User.findById(req.session.user._id)
+    .then((user)=> {
+      console.log(user);
+      res.render('eventPage', {user});
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  });
   
   
   module.exports = router;

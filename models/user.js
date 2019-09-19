@@ -18,16 +18,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     lowercase: true,
     trim: true,
-    required: true
+    required: true,
+    unique: true
   },
   username: {
     type: String,
     trim: true,
-    required: true
+    required: true,
+    unique: true
   },
   passwordHash: {
     type: String,
-    required: true,
+    required: true
     //trim: true
   },
   imageURL: {
@@ -37,15 +39,13 @@ const userSchema = new mongoose.Schema({
   userDescription: {
     type: String,
     default: 'User Description here'
-  },
-  eventsWatching: {
-    type: [ObjectId],
-    unique: true
-  },
-  eventsAttending: {
-    type: [ObjectId],
-    unique: true
   }
+  // eventsWatching: {
+  //   type: [ObjectId]
+  // },
+  // eventsAttending: {
+  //   type: [ObjectId]
+  // }
 });
 
 
