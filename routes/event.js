@@ -182,7 +182,11 @@ router.get('/add-comment/:id', checkLogin, (req, res, next) => {
 });
 
 router.get('/event-search', (req, res, next) => {
-  const searchResult = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1).toLowerCase();
+  let searchResult;
+  if (req.query.search) {
+     searchResult = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1).toLowerCase();
+  }
+  //console.log("search result",searchResult);
   const typeResult = req.query.type;
 
   Event.find({})
