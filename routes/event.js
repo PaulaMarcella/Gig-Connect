@@ -37,12 +37,13 @@ router.get('/event', checkLogin, (req, res, next) => {
 router.post('/event', upload.single('file'), (req, res, next) => {
   // Creating an event
   //console.log("The event object:", req.body);
-  const eventName = req.body.event;
-  const description = req.body.description;
-  const artists = req.body.artists;
-  const genre = req.body.genre;
-  const city = req.body.city; 
-  const ticketURL = req.body.ticket; 
+  // const eventName = req.body.event;
+  const eventName = req.body.event.charAt(0).toUpperCase() + req.body.event.slice(1).toLowerCase();
+  const description = req.body.description.charAt(0).toUpperCase() + req.body.description.slice(1).toLowerCase();
+  const artists = req.body.artists.charAt(0).toUpperCase() + req.body.artists.slice(1).toLowerCase();
+  const genre = req.body.genre.charAt(0).toUpperCase() + req.body.genre.slice(1).toLowerCase();
+  const city = req.body.city.charAt(0).toUpperCase() + req.body.city.slice(1).toLowerCase();
+  const ticketURL = req.body.ticket;
   const imageURL = req.file && req.file.url;
   const date = req.body.date;
   const creator = req.session.user._id;
@@ -175,6 +176,31 @@ router.get('/add-comment/:id', checkLogin, (req, res, next) => {
   })
   .catch((error) => {
     console.log(error);
+  });
+});
+
+router.get('/event-search', (req, res, next) => {
+  let searchResult;
+  if (req.query.search) {
+     searchResult = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1).toLowerCase();
+  }
+  //console.log("search result",searchResult);
+  const typeResult = req.query.type;
+
+  Event.find({})
+  .then(allEvents =>{
+    // console.log("ALL EVENTS",allEvents);
+     return allEvents.filter(event => event[typeResult] === searchResult);
+  })
+  .then(eventList => {
+    // console.log("FILTERED EVENTS",eventList);
+    const data = {
+      eventList
+    };
+    res.render('browse', data);
+  })
+  .catch(error => {
+    next(error);
   });
 });
 

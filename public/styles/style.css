@@ -26,12 +26,18 @@ body {
   display: flex;
   justify-content: center;
   width: 35%;
-  height: 35%;
 }
 
+<<<<<<< HEAD
 #concert-detail-card{
   margin: 50px;
   
 }
 
+=======
+.display-centering-code {
+  display: flex;
+  justify-content: center;
+}
+>>>>>>> 8d1c1ac14f0c6b6105e1996c4d3f0f0b61d6da14
 /*# sourceMappingURL=style.css.map */
