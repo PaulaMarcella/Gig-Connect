@@ -1,18 +1,16 @@
 <br>
-<div class="alert alert-success" role="alert">
-  You created an event successfully
-</div>
 
 <div class="card" style="width: 30rem;">
   <img src="{{event.imageURL}}" class="card-img-top" alt="Event Image" width="200px">
   <div class="card-body">
     <h5 class="card-title">{{event.eventName}}</h5>
     <p class="card-text">{{event.description}}</p>
-    {{#if event.creator}}
+
+    {{!-- {{#if event.creator}}
 
     <h1>SHOW</h1>
 
-    {{/if}}
+    {{/if}} --}}
 
 
     <small><p class="card-text">{{event.crator}}</p></small>

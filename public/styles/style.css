@@ -1,11 +1,12 @@
 body {
   margin: 0;
   font-family: 'Montserrat', Arial, sans-serif; 
-  background-image: url('../images/vinil.jpg');
+  background-image: url('../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg');
   background-size: cover;
+  color: white;
 }
 
-a {
+ navbar{
   color: #00b7ff; 
 }
 

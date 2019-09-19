@@ -3,7 +3,6 @@
 const { Router } = require('express');
 const router = Router();
 const User = require('./../models/user');
-const Event = require('./../models/event');
 const checkLogin = require('./../controllers/check-login');
 
 //-------cloudinary configurations--------
