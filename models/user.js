@@ -39,13 +39,15 @@ const userSchema = new mongoose.Schema({
   userDescription: {
     type: String,
     default: 'User Description here'
+  },
+  eventsWatching: {
+    type: [ObjectId],
+    default: []
+  },
+  eventsAttending: {
+    type: [ObjectId],
+    default: []
   }
-  // eventsWatching: {
-  //   type: [ObjectId]
-  // },
-  // eventsAttending: {
-  //   type: [ObjectId]
-  // }
 });
 
 
