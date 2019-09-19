@@ -181,4 +181,25 @@ router.get('/add-comment/:id', checkLogin, (req, res, next) => {
   });
 });
 
+router.get('/event-search', (req, res, next) => {
+  const searchResult = req.query.search;
+  const typeResult = req.query.type;
+
+  Event.find({})
+  .then(allEvents =>{
+    // console.log("ALL EVENTS",allEvents);
+     return allEvents.filter(event => event[typeResult] === searchResult);
+  })
+  .then(eventList => {
+    // console.log("FILTERED EVENTS",eventList);
+    const data = {
+      eventList
+    };
+    res.render('browse', data);
+  })
+  .catch(error => {
+    next(error);
+  });
+});
+
 module.exports = router;
