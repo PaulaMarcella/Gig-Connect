@@ -1,12 +1,26 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif; 
+  /* background-image: url('../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg'); */
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #000000, #434343); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #000000, #434343);
   color: black;
   background-color: white; }
 
 .index-background {
   background-image: url("../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg");
   background-size: cover; }
+
+  .card.search { 
+  background-color: rgba(22, 3, 3, 0.616);
+  color: white;
+  width: 800px;
+}
+
+.card-header, .card-footer { opacity: 1} input.seach {
+  width:100%;
+}
 
 .card {
   background-color: rgba(22, 3, 3, 0.616); }
@@ -29,7 +43,8 @@ body {
 .card-resizer {
   display: flex;
   justify-content: center;
-  width: 35%; }
+  max-width: 100%;
+}
 
 #concert-detail-card {
   margin: 50px; }
