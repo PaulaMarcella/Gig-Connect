@@ -95,8 +95,8 @@ router.post('/image/edit', upload.single('file'), (req, res, next) => {
     .then(() => { //removed image
       res.redirect('/profile');
     })
-    .catch(error => {
-      console.log('Could not update profile image');
+    .catch((error) => {
+      console.log('Could not update profile image', error);
     });
 });
 
@@ -115,25 +115,27 @@ router.post('/eventPageAttend/:id', checkLogin, (req, res, next) => {
   const eventId = req.params.id;
   console.log(eventId);
 
-  User.findByIdAndUpdate(req.session.user._id, {eventsAttending: eventId})
-    .then(()=> {
-      res.render('profile-attending');
+  User.findByIdAndUpdate(req.session.user._id, {
+    $push: {eventsAttending: eventId}
     })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then(()=> {
+        res.redirect('/eventPageAttend');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
 
-  router.get('/eventPageAttend/:id', (req, res, next)=> {
-    User.findById(req.session.user._id)
-    .then((user)=> {
-      console.log(user);
-      res.render('eventPage', {user});
-    })
-    .catch((error) => {
-      console.log(error);
+  router.get('/eventPageAttend', (req, res, next)=> {
+    const userId = req.session.user._id;
+    User.findById(userId).populate('eventsAttending')
+      .then((user)=> {
+        console.log(user);
+            res.render('profile-attending', {user});
+          })
+      .catch((error) => {
+        console.log(error);
+      });
     });
-  });
-  
   
   module.exports = router;

@@ -44,10 +44,11 @@ const userSchema = new mongoose.Schema({
     type: [ObjectId],
     default: []
   },
-  eventsAttending: {
-    type: [ObjectId],
-    default: []
-  }
+  eventsAttending: [{
+    type: ObjectId,
+    default: "",
+    ref: "Event"
+  }]
 });
 
 

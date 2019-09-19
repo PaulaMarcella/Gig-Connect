@@ -33,11 +33,11 @@
     <li class="list-group-item">Date: {{event.date}}</li>
     <li class="list-group-item"><a href={{event.ticketURL}} target="_blank" class="card-link">Buy Ticket</a></li>
   </ul>  
-<form method="GET" action="/eventPageAttend/{{event._id}}">
+<form method="POST" action="/eventPageAttend/{{event._id}}">
       <button id="attend-switch" type="submit" class="btn btn-outline-dark">Attend Event</button>
 </form>
 
-<form method="GET" action="/eventPageAttend/{{event._id}}">
+<form method="POST" action="/eventPageFollow">
       <button id="watch-switch" type="submit" class="btn btn-outline-dark">Follow Event</button>
 </form>
 
