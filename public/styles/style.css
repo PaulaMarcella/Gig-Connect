@@ -28,9 +28,16 @@ body {
   width: 35%;
 }
 
+<<<<<<< HEAD
 #concert-detail-card{
   margin: 50px;
   
 }
 
+=======
+.display-centering-code {
+  display: flex;
+  justify-content: center;
+}
+>>>>>>> 580399048c237822401c2f3735157681721f85de
 /*# sourceMappingURL=style.css.map */

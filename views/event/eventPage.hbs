@@ -5,7 +5,19 @@
     <h5 class="my-3 mx-3 card-title">{{event.eventName}}</h5>   
 <div class="card text-center d-column ">
 
-  <img class="col" src="{{event.imageURL}}" alt="" height="200px">
+    
+    {{#ifEquals user._id event.creator}}
+<div class="container d-flex justify-content-center">
+  <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
+      <button type="submit" class="btn btn-primary my-2">Edit Event Details</button>
+    </form>
+
+  <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/delete">
+      <button type="submit" class="btn btn-danger my-2">Delete Event</button>
+    </form>
+{{/ifEquals}}
+    
+  </div>
 </div>
       <div class="card-body col">
         <p class="card-text">{{event.description}}</p>
