@@ -101,6 +101,7 @@ router.post('/image/edit', upload.single('file'), (req, res, next) => {
 
 router.get('/profile/attending', (req, res, next) => {
   User.findById(req.session.user._id)
+  .populate('eventsAttending')
   .then((user) => {
     console.log(user);
     res.render('profile-attending', {user});
@@ -116,7 +117,7 @@ router.post('/eventPageAttend/:id', checkLogin, (req, res, next) => {
 
   User.findByIdAndUpdate(req.session.user._id, {
     $push: {eventsAttending: eventId}
-    })
+    }).populate('eventsAttending')
       .then(()=> {
         res.redirect('/eventPageAttend');
       })

@@ -38,12 +38,14 @@ const eventSchema = new mongoose.Schema({
     //
   },
   creator: {
-    type: ObjectId
+    type: ObjectId,
+    ref: "User"
   },
   comments: [{
-    commentBody: { type: String},
-    commentTitle: { type:String},
-    commentAuthor: { type: String} 
+    commentBody: String,
+    commentTitle:String,
+    commentAuthor: { type: ObjectId,
+                      ref: "User" }
   }]
 });
 

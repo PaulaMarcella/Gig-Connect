@@ -11,18 +11,24 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark background-force">
+  <nav class="navbar navbar-expand-md bg-transparent">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="/event">New Event</a>
+          <a class="nav-link" href="/event">Add</a>
+        </li>
+      </ul>
+       <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/event-search">Browse</a>
         </li>
       </ul>
     </div>
     <div class="mx-auto order-0">
-      <a class="navbar-brand mx-auto" href="/event-search">GigConnect</a>
+      <a class="navbar-brand mx-auto" href="/">GigConnect</a>
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      
       {{#unless user}}
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">

@@ -1,5 +1,75 @@
-{{!-- EVENT IMAGE AND TITLE --}}
+  <div class="card mb-4 container rounded" style="max-width: 90%;">
+  <div class="row no-gutters">
+    <div class="col mt-5">
 
+      <div class="d-flex slign-items-center mt-5">
+      <img class="col card-img rounded" src="{{event.imageURL}}" alt="{{event.description}}" height="250px">
+  </div>
+    </div>
+    <div class="col-md-8">
+      <div class="my-5 card-body">
+
+        <h2 class="my-3 mx-3 card-title">{{event.eventName}}</h2>  
+        <br>
+        
+        <h5 class="card-title">proposed by {{event.creator.username}}</h5>
+        <br>
+        <p class="card-text">{{event.description}}</p>
+        <br>
+         <p class="card-text">Artists playing:  {{event.artists}}</p>
+        <p class="card-text">Genre of this event: {{event.genre}}</p>
+        <p class="card-text">Date: {{event.date}}</p>
+        <a href={{event.ticketURL}} target="_blank">GET YOUR TICKET</a>
+
+        {{#ifEquals user._id event.creator._id}}
+        <div class="container rounded d-flex justify-content-end">
+        <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
+            <button type="submit" class="btn btn-outline-success my-2">Edit Event Details</button>
+          </form>
+
+        <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/delete">
+            <button type="submit" class="btn btn-outline-warning my-2">Delete Event</button>
+          </form>
+        </div>
+      {{/ifEquals}}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#each event.comments}}
+  <div class="card rounded container">
+    <div class="card-title mt-4">
+      <h5>{{this.commentTitle}}</h5>
+    </div>
+    <footer class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{this.commentBody}}</p>
+        <footer class="blockquote-footer text-white">{{this.commentAuthor.username}}</footer>
+      </blockquote>
+    </div>
+</div>
+  {{/each}}
+
+  <div class="card container rounded d-flex flex-column">
+<form class="p-2 form-grup" method="POST" action="/add-comment/{{event._id}}">
+  <input class="form" type="text" name="commenttitle" value="Title">
+  <br>
+  <textarea name="commentbody" cols="100" rows="4" placeholder="Write your comment here ..."></textarea>
+  <br>
+  <div class="row justify-content-end">
+    <button class=" p-2 btn btn-success">Submit Comment</button>
+  </div>
+  
+</form>
+</div>
+</div>
+
+  
+  
+  
+{{!-- 
 <div id="concert-detail-card" class="container">
 <div class="card border-0">
     <h5 class="my-3 mx-3 card-title">{{event.eventName}}</h5>   
@@ -10,16 +80,15 @@
 </div>
       <div class="card-body col">
         <p class="card-text">{{event.description}}</p>
-        <small><p class="card-text">proposed by {{event.creator}}</p></small>
+        <small><p class="card-text">proposed by {{event.creator.username}}</p></small>
         <br>
         <p class="card-text">Artists playing: {{event.artists}}</p>
         <p class="card-text">Genre of this event: {{event.genre}}</p>
         <p class="card-text">Playing On:  {{event.date}}</p>
         <a href={{event.ticketURL}} target="_blank">GET YOUR TICKET</a>
 
-    <div class="container d-flex justify-content-end">
-      {{#ifEquals user._id event.creator}}
-<div class="container d-flex justify-content-center">
+      {{#ifEquals user._id event.creator._id}}
+<div class="container d-flex justify-content-end">
   <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
       <button type="submit" class="btn btn-primary my-2">Edit Event Details</button>
     </form>
@@ -27,19 +96,18 @@
   <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/delete">
       <button type="submit" class="btn btn-danger my-2">Delete Event</button>
     </form>
-{{/ifEquals}}
-
   </div>
+{{/ifEquals}}
       </div>
     {{#each event.comments}}
   <div class="card">
     <div class="card-header">
       <h5>{{this.commentTitle}}</h5>
     </div>
-    <div class="card-body">
+    <footer class="card-body">
       <blockquote class="blockquote mb-0">
         <p>{{this.commentBody}}</p>
-        <footer class="blockquote-footer">{{this.commentAuthor}}</footer>
+        <footer class="blockquote-footer">{{this.commentAuthor.username}}</footer>
       </blockquote>
     </div>
 </div>
@@ -54,7 +122,7 @@
   <button class=" p-2 btn btn-primary">Submit Comment</button>
 </form>
 </div>
-</div>
+</div> --}}
 
 {{!-- EVENT IMAGE AND TITLE --}}
 {{!-- 
