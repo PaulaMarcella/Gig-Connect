@@ -2,29 +2,29 @@
   background: -webkit-linear-gradient(to right, #000000, #434343);
   background: linear-gradient(to right, #000000, #434343);"></body>
 <br>
-  {{!-- _________Filter and search function________ --}}
-  <div class="card-resizer my-5">
-    <div class="d-flex card search text-white">
-        <h4 class="card-title text-center">Search for Events</h4>
+{{!-- _________Filter and search function________ --}}
+<div class="card-resizer my-5">
+  <div class="d-flex card search text-white">
+    <h4 class="card-title text-center">Search for Events</h4>
 
 
-        <form method="GET" action="/event-search">
-        <div class="d-flex bd-highlight">
-          <div class="p-2 flex-grow-1 bd-highlight"><input class="search form-control" type="text" name="search"></div>
-          <div class="p-2 bd-highlight">
-              <select class="form-control" id="querySearchOptions" name='type'>
-                <option selected="true" disabled="disabled" value="event">Search by</option>
-                <option value="artist">Artist</option>
-                <option value="genre">Genre</option>
-                <option value="city">City</option>
-              </select>
-          </div>
-           <div class="p-2 bd-highlight">
-            <button class="btn btn-outline-success">Search</button>
-          </div>
+    <form method="GET" action="/event-search">
+      <div class="d-flex bd-highlight">
+        <div class="p-2 flex-grow-1 bd-highlight"><input class="search form-control" type="text" name="search"></div>
+        <div class="p-2 bd-highlight">
+          <select class="form-control" id="querySearchOptions" name='type'>
+            <option selected="true" disabled="disabled" value="event">Search by</option>
+            <option value="artist">Artist</option>
+            <option value="genre">Genre</option>
+            <option value="city">City</option>
+          </select>
         </div>
-        </form>
-    </div>
+        <div class="p-2 bd-highlight">
+          <button class="btn btn-outline-success">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 {{!-- _________Filter and search function________ --}}
@@ -41,10 +41,11 @@
       <p class="card-text">Genre: {{this.genre}}</p>
       <p class="card-text">City: {{this.city}}</p>
       <p class="card-text">Artists: {{this.artists}}</p>
-    <a class="btn btn-success" href="/eventPage/{{this._id}}">See Event Details</a>
+      <a class="btn btn-success" href="/eventPage/{{this._id}}">See Event Details</a>
     </div>
   </div>
 
   {{/each}}
 
 </div>
+<br>
