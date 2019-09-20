@@ -1,21 +1,17 @@
 <h1>{{user.username}}</h1>
 <form id="form" method="POST" action="/image/edit" enctype="multipart/form-data">
 
-<div class="card mb-3" style="max-width: 90%;">
-  <div class="row no-gutters">
+<div class="card container" style="max-width: 90%;">
+  <div class="row no-gutters my-5 mx-5">
     <div class="col-md-4">
       <img src={{user.imageURL}} alt="profile photo" width="300px">
       <label for="profile-image">Update Profile Photo</label>
     <input id="profile-image" type="file" name="file">  
+    <br>
+     <button class="btn btn-success my-3">Update Photo</button>
   
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-      </div>
     </div>
   </div>
 </div>
-
-    <button>Update Information</button>
 
 </form>

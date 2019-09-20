@@ -1,10 +1,17 @@
-  <div class="card mb-4 container rounded" style="max-width: 90%;">
+  <div class="card mt-5 mb-2 container rounded" style="max-width: 90%;">
   <div class="row no-gutters">
     <div class="col mt-5">
 
       <div class="d-flex slign-items-center mt-5">
       <img class="col card-img rounded" src="{{event.imageURL}}" alt="{{event.description}}" height="250px">
-  </div>
+    
+    </div>
+      <div class="container my-5 mx-5">
+        <form method="POST" action="/eventPageAttend/{{event._id}}">
+      <button id="attend-switch" type="submit" class="btn btn-success">Attend Event</button>
+      </form>
+      </div>
+      
     </div>
     <div class="col-md-8">
       <div class="my-5 card-body">
@@ -22,7 +29,7 @@
         <a href={{event.ticketURL}} target="_blank">GET YOUR TICKET</a>
 
         {{#ifEquals user._id event.creator._id}}
-        <div class="container rounded d-flex justify-content-end">
+        <div class="container rounded d-flex justify-content-end mt-5">
         <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
             <button type="submit" class="btn btn-outline-success my-2">Edit Event Details</button>
           </form>
@@ -31,7 +38,9 @@
             <button type="submit" class="btn btn-outline-warning my-2">Delete Event</button>
           </form>
         </div>
+        
       {{/ifEquals}}
+
 
       </div>
     </div>
@@ -39,8 +48,8 @@
 </div>
 
 {{#each event.comments}}
-  <div class="card rounded container">
-    <div class="card-title mt-4">
+  <div class="card mb-2 rounded container px-5 ">
+    <div class="card-title mt-4 px-5 ">
       <h5>{{this.commentTitle}}</h5>
     </div>
     <footer class="card-body">
@@ -52,17 +61,18 @@
 </div>
   {{/each}}
 
-  <div class="card container rounded d-flex flex-column">
+  <div class="card px-5  container rounded d-flex flex-column">
 <form class="p-2 form-grup" method="POST" action="/add-comment/{{event._id}}">
-  <input class="form" type="text" name="commenttitle" value="Title">
+  <input class="form-control my-3" type="text" name="commenttitle" value="Title">
   <br>
-  <textarea name="commentbody" cols="100" rows="4" placeholder="Write your comment here ..."></textarea>
+  <textarea class="form-control" name="commentbody" cols="100" rows="4" placeholder="Write your comment here ..."></textarea>
   <br>
   <div class="row justify-content-end">
     <button class=" p-2 btn btn-success">Submit Comment</button>
   </div>
   
 </form>
+
 </div>
 </div>
 
