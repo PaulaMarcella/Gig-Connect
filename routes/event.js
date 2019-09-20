@@ -58,7 +58,7 @@ router.post('/event', upload.single('file'), (req, res, next) => {
     imageURL,
     date,
     creator
-  })
+  }).populate('creator')
   .then(event=>{
     console.log(event);
     res.redirect('/eventPage/' + event._id);
@@ -73,8 +73,9 @@ router.post('/event', upload.single('file'), (req, res, next) => {
 
 router.get("/eventPage/:id", checkLogin, (req, res, next) => {
   //console.log(req.params.id);
-  Event.findById(req.params.id)
+  Event.findById(req.params.id).populate('creator').populate('comments.commentAuthor')
   .then((event) => {
+    console.log("POPULATE SHOW COMMENT ROUTE",event.comments[0].commentAuthor.username);
     res.render('event/eventPage', {event});
   })
   .catch((error) => {
@@ -95,7 +96,7 @@ router.get("/eventPage/:id/edit", checkLogin, (req, res, next) => {
 });
 
 
-router.post("/eventPage/:id/edit", checkCreator, (req, res, next) => {
+router.post("/eventPage/:id/edit", (req, res, next) => {
   const eventName = req.body.event;
   const description = req.body.description;
   const artists = req.body.artists;
@@ -115,7 +116,7 @@ router.post("/eventPage/:id/edit", checkCreator, (req, res, next) => {
     date };
     //console.log("DATA TO BE EDIT", data)
     
-    Event.findByIdAndUpdate(eventId, data)
+    Event.findByIdAndUpdate(eventId, data).populate('creator')
     .then(event => {
       console.log(event);
       res.redirect('/eventPage/' + eventId);
@@ -125,7 +126,7 @@ router.post("/eventPage/:id/edit", checkCreator, (req, res, next) => {
     });
   });
   
-  router.get("/eventPage/:id/delete", checkCreator, (req, res, next) => {
+  router.get("/eventPage/:id/delete", (req, res, next) => {
     const eventId = req.params.id;
   // Grab the ID and use it as an argument for deleting
     Event.findByIdAndDelete(eventId)
@@ -156,9 +157,9 @@ router.post('/add-comment/:id', checkLogin, (req, res, next) => {
           commentTitle,
           commentAuthor
         }}
-    })
+    }).populate('comments.commentAuthor')
       .then(event => {
-        console.log("UPDATED EVENT", event);
+        console.log("POPULATE  POST ADD COMMENT ROUTE", event.comments[0].commentAuthor.username);
         res.redirect("/eventPage/" + eventId);
       })
       .catch((error) => {
@@ -167,17 +168,17 @@ router.post('/add-comment/:id', checkLogin, (req, res, next) => {
   });
   
 
-router.get('/add-comment/:id', checkLogin, (req, res, next) => {
-  const eventId= req.params.id;
-    Event.findById(eventId)
-  .then((event) => {
-    // console.log(event)
-    res.render("/eventPage/" + eventId, {event});
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-});
+// router.get('/add-comment/:id', checkLogin, (req, res, next) => {
+//   const eventId= req.params.id;
+//     Event.findById(eventId).populate('comments.commentAuthor')
+//   .then((event) => {
+//     console.log("POPULATE SHOW COMMENT ROUTE",event.comments[0].commentAuthor.username);
+//     res.red("/eventPage/" + eventId,);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+// });
 
 router.get('/event-search', (req, res, next) => {
   let searchResult;

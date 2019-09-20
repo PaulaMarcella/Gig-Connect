@@ -10,16 +10,15 @@
 </div>
       <div class="card-body col">
         <p class="card-text">{{event.description}}</p>
-        <small><p class="card-text">proposed by {{event.creator}}</p></small>
+        <small><p class="card-text">proposed by {{event.creator.username}}</p></small>
         <br>
         <p class="card-text">Artists playing: {{event.artists}}</p>
         <p class="card-text">Genre of this event: {{event.genre}}</p>
         <p class="card-text">Playing On:  {{event.date}}</p>
         <a href={{event.ticketURL}} target="_blank">GET YOUR TICKET</a>
 
-    <div class="container d-flex justify-content-end">
-      {{#ifEquals user._id event.creator}}
-<div class="container d-flex justify-content-center">
+      {{#ifEquals user._id event.creator._id}}
+<div class="container d-flex justify-content-end">
   <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
       <button type="submit" class="btn btn-primary my-2">Edit Event Details</button>
     </form>
@@ -27,19 +26,18 @@
   <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/delete">
       <button type="submit" class="btn btn-danger my-2">Delete Event</button>
     </form>
-{{/ifEquals}}
-
   </div>
+{{/ifEquals}}
       </div>
     {{#each event.comments}}
   <div class="card">
     <div class="card-header">
       <h5>{{this.commentTitle}}</h5>
     </div>
-    <div class="card-body">
+    <footer class="card-body">
       <blockquote class="blockquote mb-0">
         <p>{{this.commentBody}}</p>
-        <footer class="blockquote-footer">{{this.commentAuthor}}</footer>
+        <footer class="blockquote-footer">{{this.commentAuthor.username}}</footer>
       </blockquote>
     </div>
 </div>

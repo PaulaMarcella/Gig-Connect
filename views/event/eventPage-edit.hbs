@@ -2,43 +2,99 @@
 <h4 class="form-group">Edit {{event.eventName}}:</h4>
 <br>
 
-<form id="form" method="POST" action="/eventPage/{{event._id}}/edit">
 <div class="container">
+<form id="form" method="POST" action="/eventPage/{{event._id}}/edit">
+
+  <div class="row">
+    <div class="col">
+      <label for="event">Name your Event</label>
+      <input type="text" class="form-control" name="event" value="{{event.eventName}}">
+    </div>
+    <div class="col">
+      <label for="artists">Add Artist(s)</label>
+        <input type="text" class="form-control" name="artists" value="{{event.artists}}"></input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label for="genre">Add Genre</label>
+      <input type="text" class="form-control" name="genre" value="{{event.genre}}">
+    </div>
+    <div class="col">
+      <label for="city">Add City</label>
+      <input type="text" class="form-control" name="city" value="{{event.city}}"></input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label for="ticket">Add Ticket URL</label>
+      <input type="text" class="form-control" name="ticket" value="{{event.ticketURL}}"></input>
+    </div>
+    <div class="col">
+      <label for="date">Date</label>
+      <input type="date" class="form-control" name="date" value="{{event.date}}"></input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+     <label for="description">Description</label>
+      <textarea class="form-control" name="description" rows="3" value="{{event.description}}">{{event.description}}</textarea>
+    </div>
+  </div>
+
+<br>
+  <button type="submit" class="btn btn-success px-5">Submit</button>
+
+</form>
+</div>
 
 
-<form class="px-5">
-  <div class="form-group">
-    <label for="event">Event</label>
-    <input type="text" class="form-control" name="event" value="{{event.eventName}}">
+{{!-- 
+
+<div class="container ">
+  <div class="row">
+<form id="form" method="POST" action="/eventPage/{{event._id}}/edit">
+
+  <div class="col">
+  <form class="px-5">
+    <div class="form-group">
+      <label for="event">Event</label>
+      <input type="text" class="form-control" name="event" value="{{event.eventName}}">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" name="description" rows="3" value="{{event.description}}">{{event.description}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <input type="text" class="form-control" name="genre" value="{{event.genre}}">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea class="form-control" name="description" rows="3" value="{{event.description}}">{{event.description}}</textarea>
-  </div>
-  <div class="form-group">
-    <label for="genre">Genre</label>
-    <input type="text" class="form-control" name="genre" value="{{event.genre}}">
-  </div>
-  <div class="form-group">
-    <label for="artists">Artist(s)</label>
-    <input type="text" class="form-control" name="artists" value="{{event.artists}}"></input>
-  </div>
-  <div class="form-group">
-    <label for="city">City</label>
-    <input type="text" class="form-control" name="city" value="{{event.city}}"></input>
-  </div>
-  <div class="form-group">
-    <label for="ticket">Ticket URL</label>
-    <input type="text" class="form-control" name="ticket" value="{{event.ticketURL}}"></input>
-  </div>
-  <div class="form-group">
-    <label for="date">Date</label>
-    <input type="date" class="form-control" name="date" value="{{event.date}}"></input>
+
+  <div class="col">
+      <div class="form-group">
+        <label for="artists">Artist(s)</label>
+        <input type="text" class="form-control" name="artists" value="{{event.artists}}"></input>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" name="city" value="{{event.city}}"></input>
+      </div>
+      <div class="form-group">
+        <label for="ticket">Ticket URL</label>
+        <input type="text" class="form-control" name="ticket" value="{{event.ticketURL}}"></input>
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" name="date" value="{{event.date}}"></input>
+      </div>
   </div>
   <br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<br>
-</form>
 
 </div>
+</div> --}}

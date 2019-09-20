@@ -1,3 +1,6 @@
+<body style="background: #000000;
+  background: -webkit-linear-gradient(to right, #000000, #434343);
+  background: linear-gradient(to right, #000000, #434343);"></body>
 <br>
   {{!-- _________Filter and search function________ --}}
   <div class="card-resizer my-5">
@@ -8,12 +11,13 @@
         <form method="GET" action="/event-search">
         <div class="d-flex bd-highlight">
           <div class="p-2 flex-grow-1 bd-highlight"><input class="search form-control" type="text" name="search"></div>
-          <div class="p-2 bd-highlight"><select class="form-control" id="querySearchOptions" name='type'>
-                      <option selected="true" disabled="disabled" value="event">Search by</option>
-                      <option value="artist">Artist</option>
-                      <option value="genre">Genre</option>
-                      <option value="city">City</option>
-                    </select>
+          <div class="p-2 bd-highlight">
+              <select class="form-control" id="querySearchOptions" name='type'>
+                <option selected="true" disabled="disabled" value="event">Search by</option>
+                <option value="artist">Artist</option>
+                <option value="genre">Genre</option>
+                <option value="city">City</option>
+              </select>
           </div>
            <div class="p-2 bd-highlight">
             <button class="btn btn-outline-success">Search</button>
@@ -26,25 +30,21 @@
 {{!-- _________Filter and search function________ --}}
 
 <div class="cardGrid">
+
   {{#each eventList}}
+
   <div class="card border-0" style="width: 18rem;">
     <img src="{{this.imageURL}}" class="card-img-top" alt="Event Image">
     <div class="card-body">
       <h5 class="card-title">{{this.eventName}}</h5>
-      <p class="card-text">{{this.description}}</p>
+      {{!-- <p class="card-text">{{this.description}}</p> --}}
+      <p class="card-text">Genre: {{this.genre}}</p>
+      <p class="card-text">City: {{this.city}}</p>
+      <p class="card-text">Artists: {{this.artists}}</p>
+    <a class="btn btn-success" href="/eventPage/{{this._id}}">See Event Details</a>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Genre: {{this.genre}}</li>
-      <li class="list-group-item">City: {{this.city}}</li>
-      <li class="list-group-item"><a href="{{this.ticketURL}}" class="card-link">Buy Ticket</a></li>
-    </ul>
-
-    <div class="card-body">
-      <a href="/eventPage/{{this._id}}">Event Details</a>
-    </div>
-
   </div>
 
   {{/each}}
+
 </div>
-<br>
