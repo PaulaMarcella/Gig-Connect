@@ -33,18 +33,20 @@
 
   {{#each eventList}}
 
-  <div class="card border-0" style="width: 18rem;">
-    <img src="{{this.imageURL}}" class="card-img-top" alt="Event Image">
-    <div class="card-body">
-      <h5 class="card-title">{{this.eventName}}</h5>
-      {{!-- <p class="card-text">{{this.description}}</p> --}}
-      <p class="card-text">Genre: {{this.genre}}</p>
-      <p class="card-text">City: {{this.city}}</p>
-      <p class="card-text">Artists: {{this.artists}}</p>
-      <a class="btn btn-success" href="/eventPage/{{this._id}}">See Event Details</a>
+  <div class="card-columns">
+    <div class="card border-0" style="width: 18rem;">
+      <img src="{{this.imageURL}}" class="card-img-top" alt="Event Image">
+      <div class="card-body">
+        <h5 class="card-title">{{this.eventName}}</h5>
+        {{!-- <p class="card-text">{{this.description}}</p> --}}
+        <p class="card-text">Genre: {{this.genre}}</p>
+        <p class="card-text">City: {{this.city}}</p>
+        <p class="card-text">Artists: {{this.artists}}</p>
+        <a class="btn btn-success" href="/eventPage/{{this._id}}">See Event Details</a>
+      </div>
     </div>
   </div>
-
+  
   {{/each}}
 
 </div>
