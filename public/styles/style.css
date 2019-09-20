@@ -19,6 +19,7 @@ a {
 .card { 
   background-color: rgba(22, 3, 3, 0.616);
   color: white;
+  width: 80%;
 }
 
 .card.search { 
@@ -27,7 +28,12 @@ a {
   width: 80%;
 }
 
-.card-header, .card-footer { opacity: 1}
+.card-header, .card-footer { 
+  background-color: rgba(211, 193, 193, 0.671);
+  color: black;
+  width: 80%;
+
+}
 
 
 .cardGrid {
@@ -56,7 +62,7 @@ a {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #60a3bc;
+  background: #18a336;
   padding: 20px;
   border-radius: 50px;
   display: inline-block;

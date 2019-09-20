@@ -2,6 +2,67 @@
 <h4 class="form-group">Share Your Event with the World</h4>
 <br>
 
+<div class="container">
+<form class="px-5" id="eventCreator" method="POST" action="/event" enctype="multipart/form-data">
+
+  <div class="row">
+    <div class="col">
+      <label for="event">Name your Event</label>
+    <input type="text" class="form-control" name="event" placeholder="Name your event">
+    </div>
+    <div class="col">
+      <label for="artists">Artist(s)</label>
+    <input type="text" class="form-control" name="artists" placeholder="Name the artist(s) that will headline your event"></input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+       <label for="genre">Musical Genre</label>
+    <input type="text" class="form-control" name="genre" placeholder="Name the musical genre of your event">
+    </div>
+    <div class="col">
+      <label for="city">City</label>
+    <input type="text" class="form-control" name="city" placeholder="Share the city where your event will be hosted"></input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label for="ticket">Ticket URL</label>
+    <input type="text" class="form-control" name="ticket" placeholder="Provide the URL to buy the ticket"></input>
+    </div>
+    <div class="col">
+      <label for="date">Date</label>
+    <input type="date" class="form-control" name="date" placeholder="Date"></input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+     <label for="description">Description</label>
+    <textarea class="form-control" name="description" rows="3" placeholder="Provide a short description of the event you're planning"></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label for="event-image">Upload Your Event Photo</label>
+    <input id="event-image" class="form-control-file" type="file" name="file"></input>
+    </div>
+  </div>
+
+<br>
+
+<div class="row justify-content-end">
+    <div class="col">
+    <button type="submit" class="btn btn-success px-5">Submit</button>
+    </div>
+  </div>
+</form>
+</div>
+
+{{!-- 
 <form class="px-5" id="eventCreator" method="POST" action="/event" enctype="multipart/form-data">
   <div class="form-group">
     <label for="event">Event</label>
@@ -38,4 +99,4 @@
   <br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<br>
+<br> --}}

@@ -58,7 +58,7 @@ router.post('/event', upload.single('file'), (req, res, next) => {
     imageURL,
     date,
     creator
-  }).populate('creator')
+  })
   .then(event=>{
     console.log(event);
     res.redirect('/eventPage/' + event._id);
