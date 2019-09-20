@@ -59,7 +59,7 @@ router.post('/event', upload.single('file'), (req, res, next) => {
     date,
     creator
 
-  }).populate('creator')
+  })
   .then((event) => {
     //console.log(event);
     //res.render('event/eventPage', {event});
@@ -74,10 +74,12 @@ router.post('/event', upload.single('file'), (req, res, next) => {
 // with the same name in req.params.THENAME
 
 router.get("/eventPage/:id", checkLogin, (req, res, next) => {
-  //console.log(req.params.id);
-  Event.findById(req.params.id).populate('creator').populate('comments.commentAuthor')
+  Event.findById(req.params.id)
+  .populate('creator')
+  .populate('comments.commentAuthor')
   .then((event) => {
-    console.log("POPULATE SHOW COMMENT ROUTE",event.comments[0].commentAuthor.username);
+    console.log("POPULATED EVENT", event);
+  
     res.render('event/eventPage', {event});
   })
   .catch((error) => {
@@ -145,13 +147,8 @@ router.post('/add-comment/:id', checkLogin, (req, res, next) => {
     const commentTitle = req.body.commenttitle;
     const commentAuthor = req.session.user._id;
     const eventId= req.params.id;
-  
-  const data = {
-    commentBody,
-    commentTitle,
-    commentAuthor
-    };
-    console.log("COMMENT DATA", data);
+
+    // console.log("COMMENT DATA", data);
     Event.findByIdAndUpdate(eventId ,{
       $push: {
         comments: {
@@ -159,9 +156,8 @@ router.post('/add-comment/:id', checkLogin, (req, res, next) => {
           commentTitle,
           commentAuthor
         }}
-    }).populate('comments.commentAuthor')
-      .then(event => {
-        console.log("POPULATE  POST ADD COMMENT ROUTE", event.comments[0].commentAuthor.username);
+    })
+      .then(() => {
         res.redirect("/eventPage/" + eventId);
       })
       .catch((error) => {

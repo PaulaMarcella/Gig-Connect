@@ -45,7 +45,8 @@ const eventSchema = new mongoose.Schema({
     commentBody: String,
     commentTitle:String,
     commentAuthor: { type: ObjectId,
-                      ref: "User" }
+                      ref: "User"
+                    }
   }]
 });
 
