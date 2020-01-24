@@ -28,7 +28,7 @@
         <p class="card-text">Date: {{event.date}}</p>
         <a href={{event.ticketURL}} target="_blank">GET YOUR TICKET</a>
 
-        {{#ifEquals user._id event.creator._id}}
+        {{#ifEquals user._id "{{event.creator._id}}" }}
         <div class="container rounded d-flex justify-content-end mt-5">
         <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
             <button type="submit" class="btn btn-outline-success my-2">Edit Event Details</button>

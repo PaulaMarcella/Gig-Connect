@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const eventSchema = new mongoose.Schema({
@@ -29,7 +29,7 @@ const eventSchema = new mongoose.Schema({
   },
   imageURL: {
     type: String,
-    default: '../images/default-image.jpg'
+    default: "../images/default-image.jpg"
     //required: true
   },
   date: {
@@ -41,13 +41,13 @@ const eventSchema = new mongoose.Schema({
     type: ObjectId,
     ref: "User"
   },
-  comments: [{
-    commentBody: String,
-    commentTitle:String,
-    commentAuthor: { type: ObjectId,
-                      ref: "User"
-                    }
-  }]
+  comments: [
+    {
+      commentBody: String,
+      commentTitle: String,
+      commentAuthor: { type: ObjectId, ref: "User" }
+    }
+  ]
 });
 
-module.exports = mongoose.model('Event', eventSchema);
+module.exports = mongoose.model("Event", eventSchema);

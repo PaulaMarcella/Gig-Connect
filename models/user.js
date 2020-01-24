@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const userSchema = new mongoose.Schema({
@@ -34,24 +34,25 @@ const userSchema = new mongoose.Schema({
   },
   imageURL: {
     type: String,
-    default: '../images/default-user-icon-4.jpg'
+    default: "../images/default-user-icon-4.jpg"
   },
   userDescription: {
     type: String,
-    default: 'User Description here'
+    default: "User Description here"
   },
   eventsWatching: {
     type: [ObjectId],
     default: []
   },
-  eventsAttending: [{
-    type: ObjectId,
-    default: "",
-    ref: "Event"
-  }]
+  eventsAttending: [
+    {
+      type: ObjectId,
+      default: "",
+      ref: "Event"
+    }
+  ]
 });
 
-
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

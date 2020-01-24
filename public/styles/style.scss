@@ -3,20 +3,27 @@ $link-color: #00b7ff;
 
 body {
   margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   color: black;
   background-color: white;
 }
 
 .index-background {
-  background-image: url('../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg');
+  background-image: url("../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg");
   background-size: cover;
 }
 
 // rgba(22, 3, 3, 0.616);
-.card { background-color:  rgba(0, 0, 0, 0.616); }
-.card-header, .card-footer { opacity: 1}
-.card { color: white; }
+.card {
+  background-color: rgba(0, 0, 0, 0.616);
+}
+.card-header,
+.card-footer {
+  opacity: 1;
+}
+.card {
+  color: white;
+}
 
 .cardGrid {
   display: flex;
@@ -35,7 +42,7 @@ body {
   width: 35%;
 }
 
-#concert-detail-card{
+#concert-detail-card {
   margin: 50px;
 }
 
@@ -50,8 +57,8 @@ body {
 
 body {
   margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif; 
-  background-image: url('../images/joshua-hoehne-6M9jjeZjscE-unsplash.jpg');
+  font-family: "Montserrat", Arial, sans-serif;
+  background-image: url("../images/joshua-hoehne-6M9jjeZjscE-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: auto;
   background-size: cover;
@@ -59,29 +66,32 @@ body {
   background: -webkit-linear-gradient(to right, #000000, #434343);
   background: linear-gradient(to right, #000000, #434343); */
   color: black;
-  background-color: white; }
+  background-color: white;
+}
 
 .index-background {
   background-image: url("../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg");
-  background-size: cover; }
+  background-size: cover;
+}
 
 a {
   color: white;
 }
 
-div.card { 
+div.card {
   background-color: rgba(0, 0, 0, 0.616);
   color: white;
   width: 80%;
 }
 
-div.search { 
+div.search {
   background-color: rgba(0, 0, 0, 0.616);
   color: white;
   width: 80%;
 }
 
-.card-header, .card-footer { 
+.card-header,
+.card-footer {
   background-color: rgba(211, 193, 193, 0.671);
   color: black;
   width: 80%;
@@ -90,12 +100,14 @@ div.search {
 
 .cardGrid {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+}
 
 .form-group {
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+}
 
 .form-group {
   display: flex;
@@ -109,14 +121,17 @@ div.search {
 }
 
 #concert-detail-card {
-  margin: 50px; }
+  margin: 50px;
+}
 
 .display-centering-code {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+}
 
 .background-force {
-  background-color: black; }
+  background-color: black;
+}
 
 .example_b {
   margin: 30px;
@@ -129,11 +144,12 @@ div.search {
   display: inline-block;
   border: none;
   transition: all 0.4s ease 0s;
-  }
+}
 
 .example_b:hover {
   text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
   transition: all 0.4s ease 0s;
 }
