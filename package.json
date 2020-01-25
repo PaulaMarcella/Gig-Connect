@@ -1,6 +1,9 @@
 {
   "name": "gig-connect",
   "version": "0.1.0",
+  "engines": {
+    "node": "10.16.3"
+  },
   "private": true,
   "scripts": {
     "start": "node ./server",
