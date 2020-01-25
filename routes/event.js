@@ -43,10 +43,10 @@ router.post("/event", upload.single("file"), (req, res, next) => {
   const description =
     req.body.description.charAt(0).toUpperCase() +
     req.body.description.slice(1).toLowerCase();
-  const artists =
+  const artistArray =
     req.body.artists.charAt(0).toUpperCase() +
     req.body.artists.slice(1).toLowerCase();
-  const genre =
+  const genreArray =
     req.body.genre.charAt(0).toUpperCase() +
     req.body.genre.slice(1).toLowerCase();
   const city =
@@ -56,6 +56,9 @@ router.post("/event", upload.single("file"), (req, res, next) => {
   const imageURL = req.file && req.file.url;
   const date = req.body.date;
   const creator = req.session.user._id;
+
+  const artists = artistArray.split(",").map(item => item.trim());
+  const genre = genreArray.split(",").map(item => item.trim());
 
   Event.create({
     eventName,
@@ -176,52 +179,69 @@ router.post("/add-comment/:id", checkLogin, (req, res, next) => {
 });
 
 router.get("/browse", (req, res, next) => {
-  const query = req.query.seach;
-  Event.find({ $in: query })
+  Event.find({})
     .then(eventList => {
-      const data = { eventList: eventList };
-      res.render("browse", data);
+      res.render("browse", { eventList });
     })
     .catch(error => {
       console.log(error);
     });
 });
 
-router.get("/event-search", (req, res, next) => {
-  const query = req.query.seach;
-  Event.find({ artists: query })
-    .then(filteredEvents => {
-      res.render("browse");
-      console.log(filteredEvents);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+// app.get("/event-search", async (req, res) => {
+//   try {
+//     const query = req.query.search;
+//     const type = req.query.type.toLowerCase();
+//     const filteredEvents = await Event.find({ city: query }).exec();
+//     res.render("browse", { eventList: filteredEvents });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
-  // let searchResult;
-  // if (req.query.search) {
-  //   searchResult =
-  //     req.query.search.charAt(0).toUpperCase() +
-  //     req.query.search.slice(1).toLowerCase();
-  // }
-  // //console.log("search result",searchResult);
-  // const typeResult = req.query.type;
-  // console.log(typeResult);
-  // Event.find({})
-  //   .then(allEvents => {
-  //     // console.log("ALL EVENTS",allEvents);
-  //     return allEvents.filter(event => event[typeResult] === searchResult);
-  //   })
-  //   .then(eventList => {
-  //     // console.log("FILTERED EVENTS",eventList);
-  //     const data = {
-  //       eventList
-  //     };
-  //     res.render("browse", data);
-  //   })
-  //   .catch(error => {
-  //     next(error);
-  //   });
+router.get("/search", async (req, res, next) => {
+  try {
+    const query = req.query.search;
+    const type = req.query.type.toLowerCase();
+    let filteredEvents;
+    if (query === "") {
+      filteredEvents = await Event.find({}).exec();
+    } else if (type === "city") {
+      filteredEvents = await Event.find({ city: query }).exec();
+    } else if (type === "genre") {
+      filteredEvents = await Event.find({ genre: query }).exec();
+    } else if (type === "artists") {
+      filteredEvents = await Event.find({ artists: query }).exec();
+    }
+    res.render("browse", { eventList: filteredEvents });
+  } catch (error) {
+    console.log(error);
+  }
 });
+
+// let searchResult;
+// if (req.query.search) {
+//   searchResult =
+//     req.query.search.charAt(0).toUpperCase() +
+//     req.query.search.slice(1).toLowerCase();
+// }
+// //console.log("search result",searchResult);
+// const typeResult = req.query.type;
+// console.log(typeResult);
+// Event.find({})
+//   .then(allEvents => {
+//     // console.log("ALL EVENTS",allEvents);
+//     return allEvents.filter(event => event[typeResult] === searchResult);
+//   })
+//   .then(eventList => {
+//     // console.log("FILTERED EVENTS",eventList);
+//     const data = {
+//       eventList
+//     };
+//     res.render("browse", data);
+//   })
+//   .catch(error => {
+//     next(error);
+//   });
 
 module.exports = router;

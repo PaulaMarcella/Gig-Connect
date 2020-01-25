@@ -26,10 +26,6 @@ const upload = multer({ storage });
 
 //----------------------------------------
 
-router.get("/", (req, res, next) => {
-  res.render("index");
-});
-
 router.get("/profile", (req, res, next) => {
   User.findById(req.session.user._id)
     .then(user => {

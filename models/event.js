@@ -8,18 +8,12 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  artists: {
-    type: String //change to array
-    //required: true
-  },
   description: {
     type: String,
     required: true
   },
-  genre: {
-    type: String,
-    required: true //change to array
-  },
+  artists: [{ type: String }],
+  genre: [{ type: String }],
   city: {
     type: String,
     required: true

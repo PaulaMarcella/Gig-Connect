@@ -9,13 +9,13 @@
     <h4 class="card-title text-center">Search for Events</h4>
 
 
-    <form method="GET" action="/event-search">
+    <form method="GET" action="/search"">
       <div class="d-flex bd-highlight">
         <div class="p-2 flex-grow-1 bd-highlight"><input class="search form-control" type="text" name="search"></div>
         <div class="p-2 bd-highlight">
           <select class="form-control" id="querySearchOptions" name='type'>
             <option selected="true" disabled="disabled" value="event">Search by</option>
-            <option value="artist">Artist</option>
+            <option value="artists">Artist</option>
             <option value="genre">Genre</option>
             <option value="city">City</option>
           </select>
