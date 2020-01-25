@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif; 
-  background-image: url('../images/joshua-hoehne-6M9jjeZjscE-unsplash.jpg');
+  font-family: "Montserrat", Arial, sans-serif;
+  background-image: url("../images/joshua-hoehne-6M9jjeZjscE-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: auto;
   background-size: cover;
@@ -11,30 +11,28 @@ body {
   color: black;
 }
 
-
 a {
   color: white;
 }
 
-.card { 
+.card {
   background-color: rgba(0, 0, 0, 0.616);
   color: white;
   width: 80%;
 }
 
-div.search { 
+div.search {
   background-color: rgba(0, 0, 0, 0.616);
   color: white;
   width: 80%;
 }
 
-.card-header, .card-footer { 
+.card-header,
+.card-footer {
   background-color: rgba(211, 193, 193, 0.671);
   color: black;
   width: 80%;
-
 }
-
 
 .cardGrid {
   display: flex;
@@ -53,7 +51,7 @@ div.search {
   max-width: 100%;
 }
 
-#concert-detail-card{
+#concert-detail-card {
   margin: 50px;
 }
 
@@ -68,11 +66,15 @@ div.search {
   display: inline-block;
   border: none;
   transition: all 0.4s ease 0s;
-  }
+}
 
 .example_b:hover {
   text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
   transition: all 0.4s ease 0s;
-  }
+}
+
+.headings {
+  color: white;
+}

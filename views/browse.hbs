@@ -3,15 +3,13 @@
   background: linear-gradient(to right, #000000, #434343);"></body>
 <br>
 {{!-- ________  search function________ --}}
-
 <div class="card-resizer my-5">
   <div class="d-flex card search text-white">
     <h4 class="card-title text-center">Search for Events</h4>
 
-
-    <form method="GET" action="/search"">
+    <form method="GET" action="/search">
       <div class="d-flex bd-highlight">
-        <div class="p-2 flex-grow-1 bd-highlight"><input class="search form-control" type="text" name="search"></div>
+        <div class="p-2 flex-grow-1 bd-highlight"><input class="search form-control" type="text" name="search"/></div>
         <div class="p-2 bd-highlight">
           <select class="form-control" id="querySearchOptions" name='type'>
             <option selected="true" disabled="disabled" value="event">Search by</option>
@@ -25,16 +23,16 @@
         </div>
       </div>
     </form>
-  </div>
+     </div>
 </div>
 
 
-<div class="container card-columns">
-  <div class="row">
-    <div class="col">
-      
+
+<div class="card-group justify-content-center">
+  <div class="row justify-content-center">
+  
       {{#each eventList}}
-<div class="card" style="width: 18rem;">
+<div class="card mx-3 my-3" style="width: 18rem;">
   <img src="{{this.imageURL}}" class="card-img-top" alt="Event Image">
   <div class="card-body">
     <h5 class="card-title">{{this.eventName}}</h5>
@@ -46,7 +44,5 @@
   </div>
 </div>
   {{/each}}
-
-    </div>
   </div>
 </div>
