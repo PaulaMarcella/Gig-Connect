@@ -1,12 +1,22 @@
-<body style="background: #000000;
-  background: -webkit-linear-gradient(to right, #000000, #434343);
-  background: linear-gradient(to right, #000000, #434343);"></body>
 
-<div class="container card my-5"> <h4>Your Upcoming Events</h4> </div>
+<div class="container card my-5"> <h4>Your Upcoming Events</h4>
+</div>
+
+{{#unless user.eventsAttending}}
+<div class="container card py-3">  
+      <h5>You currently don't have any upcoming events,
+        <br>
+        <a href="/browse">browse</a> events and attend Events to add them to your List</h5>
+      </h4>
+</div>
+{{/unless}}
+
+
 
 <div class="container card-columns">
   <div class="row">
     <div class="col">
+
       
       {{#each user.eventsAttending}}
 <div class="card" style="width: 18rem;">

@@ -1,14 +1,10 @@
 body {
   margin: 0;
   font-family: "Montserrat", Arial, sans-serif;
-  background-image: url("../images/joshua-hoehne-6M9jjeZjscE-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-size: cover;
-  /* background: #000000;
-  background: -webkit-linear-gradient(to right, #000000, #434343);
-  background: linear-gradient(to right, #000000, #434343); */
   color: black;
+  background: #c04848;
+  background: -webkit-linear-gradient(to right, #480048, #c04848);
+  background: linear-gradient(to right, #480048, #c04848);
 }
 
 a {
@@ -16,13 +12,13 @@ a {
 }
 
 .card {
-  background-color: rgba(0, 0, 0, 0.616);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   width: 80%;
 }
 
 div.search {
-  background-color: rgba(0, 0, 0, 0.616);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   width: 80%;
 }

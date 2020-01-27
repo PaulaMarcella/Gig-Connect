@@ -1,21 +1,17 @@
-// $font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $link-color: #00b7ff;
 
 body {
   margin: 0;
   font-family: "Montserrat", Arial, sans-serif;
   color: black;
-  background-color: white;
-}
-
-.index-background {
-  background-image: url("../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg");
-  background-size: cover;
+  background: #c04848;
+  background: -webkit-linear-gradient(to right, #480048, #c04848);
+  background: linear-gradient(to right, #480048, #c04848);
 }
 
 // rgba(22, 3, 3, 0.616);
 .card {
-  background-color: rgba(0, 0, 0, 0.616);
+  background-color: rgba(22, 3, 3, 0.616);
 }
 .card-header,
 .card-footer {
@@ -58,20 +54,8 @@ body {
 body {
   margin: 0;
   font-family: "Montserrat", Arial, sans-serif;
-  background-image: url("../images/joshua-hoehne-6M9jjeZjscE-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-size: cover;
-  /* background: #000000;
-  background: -webkit-linear-gradient(to right, #000000, #434343);
-  background: linear-gradient(to right, #000000, #434343); */
   color: black;
   background-color: white;
-}
-
-.index-background {
-  background-image: url("../images/georgios-kaleadis-aBTfTMsOCOI-unsplash.jpg");
-  background-size: cover;
 }
 
 a {
@@ -79,13 +63,13 @@ a {
 }
 
 div.card {
-  background-color: rgba(0, 0, 0, 0.616);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   width: 80%;
 }
 
 div.search {
-  background-color: rgba(0, 0, 0, 0.616);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   width: 80%;
 }
