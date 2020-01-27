@@ -26,7 +26,15 @@
 
 
 <div class="card-group justify-content-center">
+   {{#unless eventList}}
+    <h5>Sorry, there where no matching Events found.
+      <br>
+      Try searching for something else or <a style="color: black"href="/event">add your own Event</a> now!
+    </h5>
+    {{/unless }}
   <div class="row justify-content-center">
+
+   
   
       {{#each eventList}}
 <div class="card mx-3 my-3" style="width: 18rem; border: none;">
