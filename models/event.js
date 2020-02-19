@@ -12,12 +12,11 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  artists: [{ type: String, lowercase: true }],
-  genre: [{ type: String, lowercase: true }],
+  artists: [{ type: String }],
+  genre: [{ type: String }],
   city: {
     type: String,
-    required: true,
-    lowercase: true
+    required: true
   },
   ticketURL: {
     type: String

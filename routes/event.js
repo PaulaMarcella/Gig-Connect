@@ -133,7 +133,6 @@ router.post("/eventPage/:id/edit", (req, res, next) => {
     ticketURL,
     date
   };
-  //console.log("DATA TO BE EDIT", data)
 
   Event.findByIdAndUpdate(eventId, data)
     .populate("creator")
@@ -194,7 +193,9 @@ router.get("/browse", (req, res, next) => {
 
 router.get("/search", async (req, res, next) => {
   try {
-    const query = req.query.search.toLowerCase();
+    const query =
+      req.query.search.charAt(0).toUpperCase() +
+      req.query.search.slice(1).toLowerCase();
     const type = req.query.type.toLowerCase();
     let filteredEvents;
     if (query === "") {
