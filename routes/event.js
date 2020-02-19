@@ -3,6 +3,7 @@
 const { Router } = require("express");
 const router = Router();
 const Event = require("../models/event");
+const User = require("../models/user");
 
 const checkLogin = require("./../controllers/check-login");
 const checkCreator = require("./../controllers/check-creator");
@@ -72,8 +73,6 @@ router.post("/event", upload.single("file"), (req, res, next) => {
     creator
   })
     .then(event => {
-      //console.log(event);
-      //res.render('event/eventPage', {event});
       res.redirect("/eventPage/" + event._id);
     })
     .catch(error => {
@@ -89,9 +88,14 @@ router.get("/eventPage/:id", checkLogin, (req, res, next) => {
     .populate("creator")
     .populate("comments.commentAuthor")
     .then(event => {
-      console.log("POPULATED EVENT", event);
-
-      res.render("event/eventPage", { event });
+      User.findById(req.session.user._id)
+        .then(user => {
+          console.log("USER: ", user);
+          res.render("event/eventPage", { event, user });
+        })
+        .catch(error => {
+          console.log(error);
+        });
     })
     .catch(error => {
       console.log(error);
@@ -188,20 +192,9 @@ router.get("/browse", (req, res, next) => {
     });
 });
 
-// app.get("/event-search", async (req, res) => {
-//   try {
-//     const query = req.query.search;
-//     const type = req.query.type.toLowerCase();
-//     const filteredEvents = await Event.find({ city: query }).exec();
-//     res.render("browse", { eventList: filteredEvents });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
 router.get("/search", async (req, res, next) => {
   try {
-    const query = req.query.search;
+    const query = req.query.search.toLowerCase();
     const type = req.query.type.toLowerCase();
     let filteredEvents;
     if (query === "") {

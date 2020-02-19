@@ -6,21 +6,25 @@
       <img class="col card-img rounded" src="{{event.imageURL}}" alt="{{event.description}}" height="250px">
     
     </div>
+{{#ifNotAttending user event }} 
       <div class="container my-5 mx-5">
-        <form method="POST" action="/eventPageAttend/{{event._id}}">
+        <form method="POST" action="/attend/{{event._id}}">
       <button id="attend-switch" type="submit" class="btn btn-success">
         <i class="far fa-heart mr-2"></i>Attend Event</button>
       </form>
       </div>
+{{/ifNotAttending}}
 
-    {{!-- </div>
+{{#ifAttending user event }} 
       <div class="container my-5 mx-5">
-        <form method="POST" action="/eventPageAttend/{{event._id}}">
-      <button id="attend-switch" type="submit" class="btn btn-success">
-        <i class="far fa-heart mr-2"></i>Attend Event</button>
+        <p>You are attending this event</p>
+        <form method="POST" action="/unattend/{{event._id}}">
+      <button id="unattend-switch" type="submit" class="btn btn-success">
+        <i class="far fa-heart mr-2"></i>Unattend Event</button>
       </form>
-      </div> --}}
-      
+      </div> 
+  {{/ifAttending}}
+     
     </div>
     <div class="col-md-8">
       <div class="my-5 card-body">
@@ -37,7 +41,9 @@
         <p class="card-text">Date: {{event.date}}</p>
         <a href={{event.ticketURL}} target="_blank">GET YOUR TICKET</a>
 
-        {{#ifEquals user._id "{{event.creator._id}}" }}
+  
+
+        {{#ifCreator user event }}     
         <div class="container rounded d-flex justify-content-end mt-5">
         <form class="d-inline mx-3" method="GET" action="/eventPage/{{event._id}}/edit"> 
             <button type="submit" class="btn btn-outline-success my-2">Edit Event Details</button>
@@ -48,7 +54,7 @@
           </form>
         </div>
         
-      {{/ifEquals}}
+      {{/ifCreator}}
 
 
       </div>
@@ -57,7 +63,7 @@
 </div>
 
 {{#each event.comments}}
-<div class="card mb-2 rounded container px-5 py-4 ">
+<div class="card mb-2 rounded container px-5 py-4 "style="max-width: 90%;">
     <div class="media rounded">
   <div class="media-body">
     <h5 class="mt-0 mb-1">{{this.commentTitle}}</h5>
@@ -69,7 +75,7 @@
 </div>
   {{/each}}
 
-  <div class="card px-5  container rounded d-flex flex-column">
+  <div class="card px-5  container rounded d-flex flex-column" style="max-width: 90%;">
 <form class="p-2 form-grup" method="POST" action="/add-comment/{{event._id}}">
   <input class="form-control my-3" type="text" name="commenttitle" value="Title">
   <br>

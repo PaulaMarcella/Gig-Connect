@@ -13,13 +13,13 @@
 
 
 
-<div class="container card-columns">
-  <div class="row">
-    <div class="col">
+<div class="card-group justify-content-center">
+  <div class="row justify-content-center">
+
 
       
       {{#each user.eventsAttending}}
-<div class="card" style="width: 18rem;">
+<div class="card mx-3 my-3" style="width: 18rem; border: none;">
   <img src="{{this.imageURL}}" class="card-img-top" alt="Event Image">
   <div class="card-body">
     <h5 class="card-title">{{this.eventName}}</h5>
@@ -32,6 +32,6 @@
 </div>
   {{/each}}
 
-    </div>
+
   </div>
 </div>

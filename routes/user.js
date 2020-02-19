@@ -108,14 +108,26 @@ router.get("/profile/attending", (req, res, next) => {
     });
 });
 
-router.post("/eventPageAttend/:id", checkLogin, (req, res, next) => {
+router.post("/attend/:id", checkLogin, (req, res, next) => {
   const eventId = req.params.id;
   console.log(eventId);
 
   User.findByIdAndUpdate(req.session.user._id, {
     $push: { eventsAttending: eventId }
   })
-    .populate("eventsAttending")
+    .then(() => {
+      res.redirect("/eventPageAttend");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+router.post("/unattend/:id", checkLogin, (req, res, next) => {
+  const eventId = req.params.id;
+  console.log(eventId);
+  User.findByIdAndUpdate(req.session.user._id, {
+    $pull: { eventsAttending: eventId }
+  })
     .then(() => {
       res.redirect("/eventPageAttend");
     })

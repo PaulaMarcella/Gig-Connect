@@ -24,8 +24,21 @@ const app = express();
 app.set("views", join(__dirname, "views"));
 app.set("view engine", "hbs");
 
-hbs.registerHelper("ifEquals", function(arg1, arg2, options) {
-  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+hbs.registerHelper("ifCreator", function(user, event, options) {
+  return JSON.stringify(user._id) == JSON.stringify(event.creator._id)
+    ? options.fn(this)
+    : options.inverse(this);
+});
+
+hbs.registerHelper("ifAttending", function(user, event, options) {
+  return user.eventsAttending.includes(event._id)
+    ? options.fn(this)
+    : options.inverse(this);
+});
+hbs.registerHelper("ifNotAttending", function(user, event, options) {
+  return !user.eventsAttending.includes(event._id)
+    ? options.fn(this)
+    : options.inverse(this);
 });
 
 app.use(serveFavicon(join(__dirname, "public/images", "favicon.ico")));
