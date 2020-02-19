@@ -6,7 +6,6 @@ const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const sassMiddleware = require("node-sass-middleware");
-const serveFavicon = require("serve-favicon");
 
 const expressSession = require("express-session");
 const MongoStore = require("connect-mongo")(expressSession);
@@ -41,7 +40,6 @@ hbs.registerHelper("ifNotAttending", function(user, event, options) {
     : options.inverse(this);
 });
 
-app.use(serveFavicon(join(__dirname, "public/images", "favicon.ico")));
 app.use(express.static(join(__dirname, "public")));
 app.use(
   sassMiddleware({
