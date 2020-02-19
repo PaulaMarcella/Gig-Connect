@@ -1,28 +1,47 @@
-<h1>{{user.username}}</h1>
-<form id="form" method="POST" action="/profile/edit">
+{{!-- _____________UPPER NAV --}}
 
-<div class="card mb-3" style="max-width: 90%;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="{{user.imageURL}}" alt="profile photo" width="300px">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        
-    <label for="firstname">Your First Name:</label>
-    <input type="text" name="firstname" value="{{user.firstname}}">
-
-    <label for="lastname">Your Last Name:</label>
-    <input type="text" name="lastname" value="{{user.lastname}}">
-
-    <label for="userDescription">Your Story:</label>
-    <textarea type="textfield" name="userDescription" value="{{user.userDescription}}"></textarea>
-
-    </div>
-    <button>Update Information</button>
-    </div>
+<div class="card container my-2" style="max-width: 90%;">
+  <div class="navbar">
+    <a href="/event" class="btn btn-outline-success">Post New Event</a>
+    <a href="/browse" class="btn btn-outline-success">Browse Events</a>
+    <a href="/profile/attending" class="btn btn-outline-success">My Upcoming Events</a>
   </div>
 </div>
 
+{{!--------Lower Part --}}
 
-</form>
+<div class="card mb-3 container rounded" style="max-width: 90%;">
+  <div class="row no-gutters">
+
+    {{!--------IMAGE --}}
+    <div class="col-md-4">
+       <img class="my-5 rounded-pill" src={{user.imageURL}} alt="profile photo" width="300px">
+      <div class="d-flex justify-content-center">
+    <form method="GET" action="/image/edit">
+      <button class="mx-3 my-3 nav-link btn btn-sm btn-success">Edit Photo</button>
+    </form>
+    
+  </div>
+    </div>
+
+ {{!--------FORM --}}
+    <div class="col-md-8">
+      <div class="my-5 ml-5 card-body">
+      <form id="form" method="POST" action="/profile/edit">
+
+    <label for="firstname">Your First Name:</label>
+    <input class="form-control" type="text" name="firstname" value="{{user.firstname}}">
+
+    <label for="lastname">Your Last Name:</label>
+    <input class="form-control" type="text" name="lastname" value="{{user.lastname}}">
+
+    <label for="userDescription">Your Story:</label>
+    <textarea class="form-control" type="textfield" name="userDescription" value="{{user.userDescription}}"></textarea>
+
+    <button class="mt-5 btn btn-success">Update Information</button>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

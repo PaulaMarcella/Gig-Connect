@@ -10,7 +10,7 @@
       <div class="container my-5 mx-5">
         <form method="POST" action="/attend/{{event._id}}">
       <button id="attend-switch" type="submit" class="btn btn-success">
-        <i class="far fa-heart mr-2"></i>Attend Event</button>
+        <i class="fas fa-heart mr-2"></i>Attend Event</button>
       </form>
       </div>
 {{/ifNotAttending}}
@@ -20,7 +20,7 @@
         <p>You are attending this event</p>
         <form method="POST" action="/unattend/{{event._id}}">
       <button id="unattend-switch" type="submit" class="btn btn-success">
-        <i class="far fa-heart mr-2"></i>Unattend Event</button>
+        <i class="fas fa-heart-broken mr-2"></i>Unattend Event</button>
       </form>
       </div> 
   {{/ifAttending}}

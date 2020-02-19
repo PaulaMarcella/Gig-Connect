@@ -213,29 +213,4 @@ router.get("/search", async (req, res, next) => {
   }
 });
 
-// let searchResult;
-// if (req.query.search) {
-//   searchResult =
-//     req.query.search.charAt(0).toUpperCase() +
-//     req.query.search.slice(1).toLowerCase();
-// }
-// //console.log("search result",searchResult);
-// const typeResult = req.query.type;
-// console.log(typeResult);
-// Event.find({})
-//   .then(allEvents => {
-//     // console.log("ALL EVENTS",allEvents);
-//     return allEvents.filter(event => event[typeResult] === searchResult);
-//   })
-//   .then(eventList => {
-//     // console.log("FILTERED EVENTS",eventList);
-//     const data = {
-//       eventList
-//     };
-//     res.render("browse", data);
-//   })
-//   .catch(error => {
-//     next(error);
-//   });
-
 module.exports = router;
