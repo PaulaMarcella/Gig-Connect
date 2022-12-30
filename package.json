@@ -33,7 +33,7 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "nodemon": "^1.19.2",
     "eslint": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
